@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Bullet
+  - Box
+  - Fruit
+  - Defense
+  - timer
+  - hour
+  - min
+  - sec
+  - C_hour
+  - C_min
+  - C_sec
+  - NetworkManager
+  - play
+  - P5
+  - left
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - object
+  - Ground
+  - Box
+  - Bullet
+  - Defense
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: object
+    uniqueID: 3669786755
+    locked: 0

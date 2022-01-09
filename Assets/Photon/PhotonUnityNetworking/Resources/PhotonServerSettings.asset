@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3758f8f58fdef43803eb9be1df0608, type: 3}
+  m_Name: PhotonServerSettings
+  m_EditorClassIdentifier: 
+  AppSettings:
+    AppIdRealtime: 965c85c1-1f0b-4dac-ba98-0a45efcf1e8a
+    AppIdFusion: 
+    AppIdChat: 
+    AppIdVoice: 
+    AppVersion: 
+    UseNameServer: 1
+    FixedRegion: us
+    Server: 
+    Port: 0
+    ProxyServer: 
+    Protocol: 0
+    EnableProtocolFallback: 1
+    AuthMode: 0
+    EnableLobbyStatistics: 0
+    NetworkLogging: 1
+  DevRegion: kr
+  PunLogging: 0
+  EnableSupportLogger: 0
+  RunInBackground: 1
+  StartInOfflineMode: 0
+  RpcList:
+  - ClickRpc
+  - DestroyRpc
+  - DestroySpaceship
+  - Fire
+  - RespawnSpaceship
+  - ChatRPC
+  - ImageSelect
+  - ImageSelectRPC
+  - ReadyRPC
+  - GotimerRPC
+  - RemoveParrayRPC
+  - SynVarRPC
+  - RoomRenewal
+  - PlayerOut_ImageChangeRPC
+  - PlayerOutImageChangeRPC
+  - PlayerOut
+  - player_join_room
+  - player_left_room
+  - spawnRPC
+  - FilpXRPC
+  - JumpRPC
+  - DoubleJumpRPC
+  - RunOFF
+  - RunOn
+  - DoubleJumpOffRPC
+  - JumpRpcOff
+  - Show_deathImg
+  - Text_Syn_RPC
+  - moveBulletRPC
+  - OnTriggerEnter2D
+  - Syn_update
+  - playerDieRPC
+  - PlayerDieRPC
+  - PlayerRespawn
+  - PlayerRespawnRPC
+  - test
+  - RoomMaster_Jump
+  - RoomMaster_Axis
+  - Left_Update
+  - Right_Update
+  - UP_Update
+  - ElevatorRPC
+  - ElevatorInRPC
+  - ElevatorOutRPC
+  - RB_RPC
+  - Syn_update_move
+  - Syn_update_stop
+  - RoomMaster_isLeft
+  - BreakTileRPC
+  - hitcountRPC
+  - show_crownimg
+  - playerout
+  DisableAutoOpenWizard: 1
+  ShowSettings: 1
+  DevRegionSetOnce: 1
