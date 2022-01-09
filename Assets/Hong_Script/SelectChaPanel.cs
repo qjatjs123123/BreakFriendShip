@@ -29,25 +29,30 @@ public class SelectChaPanel : MonoBehaviour
             select_img.transform.GetComponent<Image>().sprite = img[0].GetComponent<Image>().sprite;
             charactername.text = "마스크듀드";
             NetworkManager.transform.GetComponent<R_NetWorkManager>().selectnum = 1;
-            
+            char_num = 1;
+
+
         }
         else if (num == 1)
         {
             select_img.transform.GetComponent<Image>().sprite = img[1].GetComponent<Image>().sprite;
             charactername.text = "닌자거북이";
             NetworkManager.transform.GetComponent<R_NetWorkManager>().selectnum = 2;
+            char_num = 2;
         }
         else if (num == 2)
         {
             select_img.transform.GetComponent<Image>().sprite = img[2].GetComponent<Image>().sprite;
             charactername.text = "핑크맨";
             NetworkManager.transform.GetComponent<R_NetWorkManager>().selectnum = 3;
+            char_num = 3;
         }
         else if (num == 3)
         {
             select_img.transform.GetComponent<Image>().sprite = img[3].GetComponent<Image>().sprite;
             charactername.text = "버츄얼가이";
             NetworkManager.transform.GetComponent<R_NetWorkManager>().selectnum = 4;
+            char_num = 4;
         }
         
     }

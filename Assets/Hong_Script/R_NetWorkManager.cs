@@ -87,6 +87,7 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
     {
         // 플레이어 강퇴하기 위해서 true
         PhotonNetwork.EnableCloseConnection = true;
+        PhotonNetwork.AutomaticallySyncScene = true;
         Screen.SetResolution(960, 540, false);
     }
 
@@ -312,6 +313,11 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
         MasterbaninfoText.text = kick.NickName + "을 강퇴하시겠습니까?";
         kickplayer = kick;
         Masterban.SetActive(true);      
+    }
+
+    public void ClickStart()
+    {
+        LoadingSceneController.LoadScene("round1");       
     }
 
     // 강퇴확인 다이얼로그 No버튼을 눌렀을 때
