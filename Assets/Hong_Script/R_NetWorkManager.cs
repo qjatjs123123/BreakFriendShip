@@ -51,16 +51,21 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
     Player kickplayer = null;
     Player masterplayer = null;
     public GameObject errornotice;
+    public GameObject imgnotnotice;
     public GameObject StatusImg;
     public Text StatusTxt;
     public Text RoomTxt;
-    public int selectnum;
+    public int selectnum = 0;
 
     List<RoomInfo> myList = new List<RoomInfo>();
     int currentPage = 1, maxPage, multiple;
 
     //서버의 연결 , Master서버에 연결하면 OnConnectedToMaster 콜백
-    public void Connect() => PhotonNetwork.ConnectUsingSettings();
+    public void Connect()
+    {
+        if (selectnum == 0) imgnotnotice.SetActive(true);
+        else PhotonNetwork.ConnectUsingSettings();
+    }
 
     // Master서버, 상태가 되면 로비에 참가
     public override void OnConnectedToMaster() => PhotonNetwork.JoinLobby();
@@ -81,14 +86,17 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
 
     public void CreateRoom()
     {
-        StatusImg.SetActive(true);
-        RoomTxt.text = "방 생성중...";
-        if (StatusText.text == "JoinedLobby") PhotonNetwork.CreateRoom(RoomInput.text, new RoomOptions { MaxPlayers = 4 });
-        else
+        if (RoomInput.text != "")
         {
-            errornotice.SetActive(true);
-            return;
-        }       
+            StatusImg.SetActive(true);
+            RoomTxt.text = "방 생성중...";
+            if (StatusText.text == "JoinedLobby") PhotonNetwork.CreateRoom(RoomInput.text, new RoomOptions { MaxPlayers = 4 });
+            else
+            {
+                errornotice.SetActive(true);
+                return;
+            }
+        }     
     }
 
     public void OnClickNicknameBtn()
