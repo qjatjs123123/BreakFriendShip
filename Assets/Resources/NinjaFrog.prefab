@@ -240,6 +240,7 @@ MonoBehaviour:
   NickNameText: {fileID: 3630989584876904995}
   isGround: 0
   isDie: 0
+  IsRound2_Trigger: 0
   mysfx: {fileID: 2622059921012221317}
   jumpsfx: {fileID: 8300000, guid: f3d6c79571de92f43bd2d74a971b80b6, type: 3}
 --- !u!82 &2622059921012221317

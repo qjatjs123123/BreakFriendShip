@@ -47,6 +47,12 @@ MonoBehaviour:
   - RedRPC
   - RespawnSpaceship
   - isfruit
+  - moveBulletRPC
+  - BreakTileRPC
+  - ElevatorInRPC
+  - ElevatorOutRPC
+  - samestart
+  - hitcountRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

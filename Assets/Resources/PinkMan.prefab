@@ -419,6 +419,7 @@ MonoBehaviour:
   NickNameText: {fileID: 4168625563458556492}
   isGround: 0
   isDie: 0
+  IsRound2_Trigger: 0
   mysfx: {fileID: 7191617790802321345}
   jumpsfx: {fileID: 8300000, guid: f3d6c79571de92f43bd2d74a971b80b6, type: 3}
 --- !u!82 &7191617790802321345
