@@ -417,10 +417,8 @@ MonoBehaviour:
   SR: {fileID: 4975042238892694275}
   PV: {fileID: 630670317632639499}
   NickNameText: {fileID: 4168625563458556492}
-  Round: 0
   isGround: 0
-  isRun: 0
-  isLeft: 0
+  isDie: 0
   mysfx: {fileID: 7191617790802321345}
   jumpsfx: {fileID: 8300000, guid: f3d6c79571de92f43bd2d74a971b80b6, type: 3}
 --- !u!82 &7191617790802321345

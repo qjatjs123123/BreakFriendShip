@@ -95,7 +95,7 @@ public class P5Script : MonoBehaviourPunCallbacks, IPunObservable
 
         else
         {
-                stream_ready = (bool)stream.ReceiveNext();
+            stream_ready = (bool)stream.ReceiveNext();
         }
     }
 

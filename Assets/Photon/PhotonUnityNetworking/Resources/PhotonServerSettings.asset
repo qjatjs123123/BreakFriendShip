@@ -19,7 +19,7 @@ MonoBehaviour:
     AppIdVoice: 
     AppVersion: 
     UseNameServer: 1
-    FixedRegion: us
+    FixedRegion: jp
     Server: 
     Port: 0
     ProxyServer: 
@@ -28,66 +28,25 @@ MonoBehaviour:
     AuthMode: 0
     EnableLobbyStatistics: 0
     NetworkLogging: 1
-  DevRegion: kr
+  DevRegion: jp
   PunLogging: 0
   EnableSupportLogger: 0
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - BlackRPC
+  - ChatRPC
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
-  - Fire
-  - RespawnSpaceship
-  - ChatRPC
-  - ImageSelect
-  - ImageSelectRPC
-  - ReadyRPC
-  - GotimerRPC
-  - RemoveParrayRPC
-  - SynVarRPC
-  - RoomRenewal
-  - PlayerOut_ImageChangeRPC
-  - PlayerOutImageChangeRPC
-  - PlayerOut
-  - player_join_room
-  - player_left_room
-  - spawnRPC
   - FilpXRPC
+  - Fire
   - JumpRPC
-  - DoubleJumpRPC
-  - RunOFF
-  - RunOn
-  - DoubleJumpOffRPC
-  - JumpRpcOff
-  - Show_deathImg
-  - Text_Syn_RPC
-  - moveBulletRPC
-  - OnTriggerEnter2D
-  - Syn_update
-  - playerDieRPC
-  - PlayerDieRPC
-  - PlayerRespawn
-  - PlayerRespawnRPC
-  - test
-  - RoomMaster_Jump
-  - RoomMaster_Axis
-  - Left_Update
-  - Right_Update
-  - UP_Update
-  - ElevatorRPC
-  - ElevatorInRPC
-  - ElevatorOutRPC
-  - RB_RPC
-  - Syn_update_move
-  - Syn_update_stop
-  - RoomMaster_isLeft
-  - BreakTileRPC
-  - hitcountRPC
-  - show_crownimg
+  - OnSomeDied
   - playerout
-  - BlackRPC
   - RedRPC
+  - RespawnSpaceship
+  - isfruit
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1
