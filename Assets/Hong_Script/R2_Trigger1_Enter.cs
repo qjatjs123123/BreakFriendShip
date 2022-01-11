@@ -9,21 +9,32 @@ using UnityEngine.Tilemaps;
 public class R2_Trigger1_Enter : MonoBehaviourPunCallbacks
 {
     public BulletScript bullet;
-    
+    public int Floor;
 
     void Update()
     {
 
     }
     /*모두 트리거에 들어왔는지 체크*/
-    private bool AllInTrigger()
+    private bool AllInTrigger(int Floor)
     {
+        
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-
-        for (int i = 0; i < players.Length; i++)
+        if (Floor == 1)
         {
-            if (!players[i].transform.GetComponent<PlayerScript>().IsRound2_Trigger)
-                return false;                      
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (!players[i].transform.GetComponent<PlayerScript>().IsRound2_Trigger)
+                    return false;
+            }
+        }
+        else if(Floor == 2)
+        {
+            for (int i = 0; i < players.Length; i++)
+            {
+                if (!players[i].transform.GetComponent<PlayerScript>().IsRound2_Trigger2)
+                    return false;
+            }
         }
         return true;
     }
@@ -35,13 +46,18 @@ public class R2_Trigger1_Enter : MonoBehaviourPunCallbacks
         if (collision.tag == "Player")
         {
             PhotonView collision_PV = collision.transform.GetComponent<PlayerScript>().PV;
-            /*충돌한 캐릭터의 포톤뷰가 내것이면 그 캐릭터 스크립트의 변수를 변경*/
-            if (collision_PV.IsMine)
+            /*충돌한 캐릭터 스크립트의 변수를 변경*/
+
+            /*첫번째 층 트리거일때*/
+            if (Floor == 1)
                 collision.transform.GetComponent<PlayerScript>().IsRound2_Trigger = true;
 
-            /*모두 트리거 안에 들어왔으면 samestart실행*/
-            if(AllInTrigger())
-                photonView.RPC("samestart", RpcTarget.AllViaServer);               
+            else if (Floor == 2)
+                collision.transform.GetComponent<PlayerScript>().IsRound2_Trigger2 = true;
+
+            /*모두 트리거 안에 들어왔으면 samestart실행 마스터클라이언트 기준*/
+            if (AllInTrigger(Floor) && PhotonNetwork.IsMasterClient)
+                photonView.RPC("samestart", RpcTarget.AllViaServer);
         }
     }
 
@@ -50,11 +66,18 @@ public class R2_Trigger1_Enter : MonoBehaviourPunCallbacks
         if (collision.tag == "Player")
         {
             PhotonView collision_PV = collision.transform.GetComponent<PlayerScript>().PV;
-            /*충돌한 캐릭터의 포톤뷰가 내것이면 그 캐릭터 스크립트의 변수를 변경*/
-            if (collision_PV.IsMine)
+            /*충돌한 캐릭터 스크립트의 변수를 변경*/
+
+            /*첫번째 층 트리거일때*/
+            if (Floor == 1)
                 collision.transform.GetComponent<PlayerScript>().IsRound2_Trigger = false;
 
+            else if (Floor == 2)
+                collision.transform.GetComponent<PlayerScript>().IsRound2_Trigger2 = false;
 
+            /*모두 트리거 안에 들어왔으면 samestart실행 마스터클라이언트 기준*/
+            if (AllInTrigger(Floor) && PhotonNetwork.IsMasterClient)
+                photonView.RPC("samestart", RpcTarget.AllViaServer);
         }
     }
 
@@ -62,6 +85,7 @@ public class R2_Trigger1_Enter : MonoBehaviourPunCallbacks
     [PunRPC]
     void samestart()
     {
+        Debug.Log("samestart");
         bullet.BulletScriptTriiger = true;
     }
 

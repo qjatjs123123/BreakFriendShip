@@ -414,6 +414,7 @@ MonoBehaviour:
   isGround: 0
   isDie: 0
   IsRound2_Trigger: 0
+  IsRound2_Trigger2: 0
   mysfx: {fileID: 62499696571486858}
   jumpsfx: {fileID: 8300000, guid: f3d6c79571de92f43bd2d74a971b80b6, type: 3}
 --- !u!82 &62499696571486858

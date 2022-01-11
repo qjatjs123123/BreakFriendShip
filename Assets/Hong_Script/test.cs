@@ -56,7 +56,8 @@ public class test : MonoBehaviourPunCallbacks
         
     }
     public void click()
-    {       
+    {
+        Debug.Log("Å¬¸¯");
         PhotonNetwork.LoadLevel("Title");
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)

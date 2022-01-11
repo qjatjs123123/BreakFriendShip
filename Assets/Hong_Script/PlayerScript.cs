@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public bool isGround;
     public bool isDie = false;
     public bool IsRound2_Trigger = false;
+    public bool IsRound2_Trigger2 = false;
 
     Vector3 curPos;
     bool stream_isDie;

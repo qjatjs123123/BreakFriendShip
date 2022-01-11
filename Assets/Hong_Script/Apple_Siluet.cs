@@ -9,6 +9,7 @@ public class Apple_Siluet : MonoBehaviourPunCallbacks
 {
     public Image[] IsFruit;
     public Sprite fruit;
+    public string nextround;
     public PhotonView PV;
     public GameObject apple;
     public GameObject apple_silute;
@@ -26,13 +27,13 @@ public class Apple_Siluet : MonoBehaviourPunCallbacks
     /*사과 4개 다 먹었으면 실행하는 함수*/
     public void nextRound()
     {
-        for (int i = 0; i < 4; i++)
-        {
-            if (IsFruit[i].sprite != fruit) return;
-        }
+        //for (int i = 0; i < 4; i++)
+        //{
+        //    if (IsFruit[i].sprite != fruit) return;
+        //}
 
         if (PhotonNetwork.IsMasterClient)
-            PhotonNetwork.LoadLevel("round2");
+            PhotonNetwork.LoadLevel(nextround);
     }
 
     public int playerindex()

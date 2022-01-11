@@ -70941,6 +70941,7 @@ MonoBehaviour:
   - {fileID: 1741977502}
   - {fileID: 1526966863}
   fruit: {fileID: 7293598183456022363, guid: 1ddc9afd21fec77489b1248d18f31b68, type: 3}
+  nextround: round2
   PV: {fileID: 590887924}
   apple: {fileID: 1684579631}
   apple_silute: {fileID: 590887920}
