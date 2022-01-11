@@ -317,7 +317,7 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
 
     public void ClickStart()
     {
-        PhotonNetwork.LoadLevel("round1");       
+        PhotonNetwork.LoadLevel("round4");       
     }
 
     // 강퇴확인 다이얼로그 No버튼을 눌렀을 때

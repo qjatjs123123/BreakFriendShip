@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
 
     public bool isGround;
+    public bool isRun;
     public bool isDie = false;
     public bool IsRound2_Trigger = false;
     public bool IsRound2_Trigger2 = false;
@@ -60,10 +61,15 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
                 if (axis != 0)
                 {
+                    isRun = true;
                     AN.SetBool("isRun", true);
                     PV.RPC("FilpXRPC", RpcTarget.AllBuffered, axis); // 재접속시 filpX를 동기화해주기 위해서 AllBuffered
                 }
-                else AN.SetBool("isRun", false);
+                else
+                {
+                    AN.SetBool("isRun", false);
+                    isRun = false;
+                }
             }
 
             // 점프, 바닥체크

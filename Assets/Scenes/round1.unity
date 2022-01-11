@@ -36052,6 +36052,7 @@ MonoBehaviour:
   - {fileID: 1475787767}
   youdied: {fileID: 1352871728}
   someonedied: {fileID: 1628529835}
+  curscene: round1
 --- !u!1 &327688403
 GameObject:
   m_ObjectHideFlags: 0

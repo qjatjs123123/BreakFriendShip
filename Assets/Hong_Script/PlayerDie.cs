@@ -11,6 +11,7 @@ public class PlayerDie : MonoBehaviourPunCallbacks
     public Transform[] SpawnPosition;
     public Image youdied;
     public Image someonedied;
+    public string curscene;
 
     GameObject LocalPlayer = null;
 
@@ -26,7 +27,7 @@ public class PlayerDie : MonoBehaviourPunCallbacks
     }
     void restart()
     {
-        PhotonNetwork.LoadLevel("round1");
+        PhotonNetwork.LoadLevel(curscene);
     }
     public Transform SelectSpwanPosition()
     {
