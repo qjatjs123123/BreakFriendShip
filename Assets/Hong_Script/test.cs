@@ -10,6 +10,7 @@ public class test : MonoBehaviourPunCallbacks
     public Transform[] SpawnPosition;
     public Text[] PlayersText;
     public Image outimg;
+
     // Start is called before the first frame update
     void Start()
     {     
@@ -41,13 +42,13 @@ public class test : MonoBehaviourPunCallbacks
     {
         Debug.Log("SpawnÇÔ¼ö");
         if (SelectChaPanel.char_num == 1)
-            PhotonNetwork.Instantiate("MaskDude", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("MaskDude1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
         else if (SelectChaPanel.char_num == 2)
-            PhotonNetwork.Instantiate("NinjaFrog", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("NinjaFrog1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
         else if (SelectChaPanel.char_num == 3)
-            PhotonNetwork.Instantiate("PinkMan", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("PinkMan1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
         else if (SelectChaPanel.char_num == 4)      
-            PhotonNetwork.Instantiate("VitualGuy", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("VitualGuy1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
     }
 
     // Update is called once per frame
