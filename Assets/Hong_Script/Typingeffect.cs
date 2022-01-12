@@ -13,14 +13,24 @@ public class Typingeffect : MonoBehaviour
     public PhotonView PV;
     public Image youdied;
     public Image someonedied;
+
+    /*현재 로컬플레이어 캐릭터 오브젝트*/
     GameObject LocalPlayer = null;
     float[] random = new float[13];
+
+    /*현재 로컬플레이어 캐릭터 오브젝트의 PlayerScript*/
     PlayerScript PS;
+    public string curscene;
 
 
     private string m_text = "무궁화 꽃이 피었습니다";
     // Start is called before the first frame update
 
+    /*다시 시작함수*/
+    void restart()
+    {
+        PhotonNetwork.LoadLevel(curscene);
+    }
     private void Start()
     {
         
@@ -37,10 +47,15 @@ public class Typingeffect : MonoBehaviour
     }
     void Update()
     {
+        
         if (tx.text == "무궁화 꽃이 피었습니다")
-        {                   
-            if (!PS.isGround || PS.isGround)
-                PV.RPC("diefunc", RpcTarget.AllViaServer, PS.PV);
+        {
+            if (!PS.isGround || PS.isRun)
+            {
+                PV.RPC("diefunc", RpcTarget.All,PS.PV.OwnerActorNr);
+                
+                
+            }
         }
     }
     /*랜덤 넘버 생성 함수*/
@@ -66,11 +81,11 @@ public class Typingeffect : MonoBehaviour
         return null;
     }
 
-
+    /*코루틴 함수로 타이핑 효과 내기*/
     IEnumerator countTime(float[] random)
     {
         yield return new WaitForSeconds(2f);
-        
+       
         for (int i = 0; i<= m_text.Length; i++)
         {
             if(i == 0)
@@ -78,16 +93,11 @@ public class Typingeffect : MonoBehaviour
             //Ghost.transform.rotation = Quaternion.Euler(0, 15 * i, 0);
 
             tx.text = m_text.Substring(0, i);
-            if(i== m_text.Length)
-            {               
-                LocalPlayer = LocalPlayerObject();
-                PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
-                if (!PS.isGround && PS.isGround)
-                    PV.RPC("diefunc", RpcTarget.AllViaServer, PS.PV);
-
+            if(i== m_text.Length && !PS.isDie)
+            {
+                Ghost.transform.rotation = Quaternion.Euler(0, 0, 0);
                 if (PhotonNetwork.IsMasterClient)
-                {
-                    Ghost.transform.rotation = Quaternion.Euler(0, 0, 0);
+                {                    
                     makerandom();
                     PV.RPC("SynRandom", RpcTarget.AllViaServer, random);
                 }
@@ -95,15 +105,19 @@ public class Typingeffect : MonoBehaviour
             yield return new WaitForSeconds(random[i]);  
         }
     }
+
+    /*죽으면 실행 PunRPC인자로 PV안되기때문에 actornumber을 인자로 보냄*/
     [PunRPC]
-    void diefunc(PhotonView PV)
+    void diefunc(int actnr)
     {
-        if (PV.IsMine)
+        if (actnr == PS.PV.OwnerActorNr)
             youdied.gameObject.SetActive(true);
         else
             someonedied.gameObject.SetActive(true);
-        StopCoroutine(countTime(random));
+        PS.isDie = true;
         tx.text = "";
+        gameObject.SetActive(false);
+        Invoke("restart", 2);
 
     }
 
@@ -117,7 +131,9 @@ public class Typingeffect : MonoBehaviour
             random[i] = num[i];
         }
         /*RPCTARGET.ALLVIA로 인해 startCoroutine 동시 실행*/
-        StartCoroutine(countTime(random));
+        if (!PS.isDie)
+            StartCoroutine("countTime", random);
+
     }
 
 }

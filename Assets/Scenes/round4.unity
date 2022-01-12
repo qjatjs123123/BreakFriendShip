@@ -1001,6 +1001,7 @@ MonoBehaviour:
   PV: {fileID: 504865715}
   youdied: {fileID: 1060441740}
   someonedied: {fileID: 1198194713}
+  curscene: round4
 --- !u!114 &504865715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69135,7 +69136,7 @@ MonoBehaviour:
   - {fileID: 772136921}
   - {fileID: 871620378}
   fruit: {fileID: 7293598183456022363, guid: 1ddc9afd21fec77489b1248d18f31b68, type: 3}
-  nextround: round2
+  nextround: round5
   PV: {fileID: 1303346246}
   apple: {fileID: 1325579459}
   apple_silute: {fileID: 1303346245}

@@ -54,30 +54,37 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         /*캐릭터 포지션 동기화*/
         if (PV.IsMine)
         {
-            if (!isDie)
+            /*죽었을 때 애니메이션 종료, 속도 0*/
+            if (isDie)
             {
-                float axis = Input.GetAxisRaw("Horizontal");
-                RB.velocity = new Vector2(4 * axis, RB.velocity.y);
-
-                if (axis != 0)
-                {
-                    isRun = true;
-                    AN.SetBool("isRun", true);
-                    PV.RPC("FilpXRPC", RpcTarget.AllBuffered, axis); // 재접속시 filpX를 동기화해주기 위해서 AllBuffered
-                }
-                else
-                {
-                    AN.SetBool("isRun", false);
-                    isRun = false;
-                }
+                RB.velocity = Vector2.zero;
+                AN.SetBool("isRun", false);
+                AN.SetBool("isJump", false);
+                return;
             }
+
+            float axis = Input.GetAxisRaw("Horizontal");
+            RB.velocity = new Vector2(4 * axis, RB.velocity.y);
+
+            if (axis != 0)
+            {
+                isRun = true;
+                AN.SetBool("isRun", true);
+                PV.RPC("FilpXRPC", RpcTarget.AllBuffered, axis); // 재접속시 filpX를 동기화해주기 위해서 AllBuffered
+            }
+            else
+            {
+                AN.SetBool("isRun", false);
+                isRun = false;
+            }
+
 
             // 점프, 바닥체크
             isGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.5f), 0.07f, 1 << LayerMask.NameToLayer("Ground"));
             AN.SetBool("isJump", !isGround);
 
 
-            if (Input.GetKeyDown(KeyCode.Space) && isGround && !isDie)
+            if (Input.GetKeyDown(KeyCode.Space) && isGround)
             {
                 
                 PV.RPC("JumpRPC", RpcTarget.All);              
