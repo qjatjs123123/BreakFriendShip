@@ -9,25 +9,32 @@ using UnityEngine.SceneManagement;
 public class PlayerDie : MonoBehaviourPunCallbacks
 {
     public Transform[] SpawnPosition;
+
+
+
     public Image youdied;
     public Image someonedied;
+    
     public string curscene;
-
+    bool turnon = false;
     GameObject LocalPlayer = null;
 
     private void Awake()
     {
-       
-        
+        PhotonNetwork.AutomaticallySyncScene = true;
+
     }
 
     private void Update()
     { 
 
     }
+ 
     void restart()
     {
-        PhotonNetwork.LoadLevel(curscene);
+
+        PhotonNetwork.LoadLevel("LoadingScene");
+        // SceneManager.LoadScene(curscene);
     }
     public Transform SelectSpwanPosition()
     {
@@ -69,7 +76,13 @@ public class PlayerDie : MonoBehaviourPunCallbacks
             }
             else
                 someonedied.gameObject.SetActive(true);
-            Invoke("restart", 2);         
+
+            if (PhotonNetwork.IsMasterClient && !turnon)
+            {
+                turnon = true;
+                Invoke("restart", 2);
+            }
+
         }
     }
 

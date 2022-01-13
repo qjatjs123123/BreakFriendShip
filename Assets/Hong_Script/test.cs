@@ -10,14 +10,17 @@ public class test : MonoBehaviourPunCallbacks
     public Transform[] SpawnPosition;
     public Text[] PlayersText;
     public Image outimg;
+    public int num;
 
     // Start is called before the first frame update
     void Start()
     {     
         Spawn();
+        
     }
     void Awake()
     {
+        R_NetWorkManager.round = num;
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             PlayersText[i].text = PhotonNetwork.PlayerList[i].NickName;
         Screen.SetResolution(960, 540, false);
@@ -42,13 +45,13 @@ public class test : MonoBehaviourPunCallbacks
     {
         Debug.Log("SpawnÇÔ¼ö");
         if (SelectChaPanel.char_num == 1)
-            PhotonNetwork.Instantiate("MaskDude1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("MaskDude", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
         else if (SelectChaPanel.char_num == 2)
-            PhotonNetwork.Instantiate("NinjaFrog1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("NinjaFrog", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
         else if (SelectChaPanel.char_num == 3)
-            PhotonNetwork.Instantiate("PinkMan1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("PinkMan", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
         else if (SelectChaPanel.char_num == 4)      
-            PhotonNetwork.Instantiate("VitualGuy1", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
+            PhotonNetwork.Instantiate("VitualGuy", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
     }
 
     // Update is called once per frame

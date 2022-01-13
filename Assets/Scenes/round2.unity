@@ -982,6 +982,7 @@ MonoBehaviour:
   - {fileID: 101933892}
   - {fileID: 2030400403}
   outimg: {fileID: 401481277}
+  num: 2
 --- !u!4 &365049195
 Transform:
   m_ObjectHideFlags: 0

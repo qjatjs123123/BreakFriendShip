@@ -28,7 +28,7 @@ public class V_LaserScript : MonoBehaviourPun
     }
     void restart()
     {
-        PhotonNetwork.LoadLevel(curscene);
+        PhotonNetwork.LoadLevel("LoadingScene");
     }
     void Awake()
     {
@@ -59,8 +59,11 @@ public class V_LaserScript : MonoBehaviourPun
                 }
                 else
                     someonedied.gameObject.SetActive(true);
-                Invoke("restart", 2);
-                turnon = true;
+                if (PhotonNetwork.IsMasterClient && !turnon)
+                {
+                    turnon = true;
+                    Invoke("restart", 2);
+                }
                 return;
             }
             LaserPoints();

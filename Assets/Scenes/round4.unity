@@ -814,6 +814,7 @@ MonoBehaviour:
   - {fileID: 867889375}
   - {fileID: 176421894}
   outimg: {fileID: 1026538786}
+  num: 4
 --- !u!4 &437612426
 Transform:
   m_ObjectHideFlags: 0

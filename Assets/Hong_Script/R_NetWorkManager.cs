@@ -57,7 +57,10 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
     public Text StatusTxt;
     public Text RoomTxt;
     public int selectnum = 0;
-    
+
+
+    /*전역변수*/
+    public static int round = 0;
 
     List<RoomInfo> myList = new List<RoomInfo>();
     int currentPage = 1, maxPage, multiple;
@@ -317,7 +320,8 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
 
     public void ClickStart()
     {
-        PhotonNetwork.LoadLevel("round5");       
+        //DontDestroyOnLoad(this.gameObject);
+        PhotonNetwork.LoadLevel("round6");       
     }
 
     // 강퇴확인 다이얼로그 No버튼을 눌렀을 때

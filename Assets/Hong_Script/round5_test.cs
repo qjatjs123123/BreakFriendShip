@@ -17,16 +17,18 @@ public class round5_test : MonoBehaviourPunCallbacks
     public GameObject updefense2;
     public GameObject leftdefense;
     public GameObject rightdefense;
+    public int num;
     GameObject defense;
     int player_index;
+    bool turnon = false;
     // Start is called before the first frame update
     void Start()
     {
         Spawn();
-        DefenseSpawn();
     }
     void Awake()
     {
+        R_NetWorkManager.round = num;
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
             PlayersText[i].text = PhotonNetwork.PlayerList[i].NickName;
         Screen.SetResolution(960, 540, false);
@@ -67,30 +69,32 @@ public class round5_test : MonoBehaviourPunCallbacks
     public void DefenseSpawn()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        
         for (int i = 0; i < players.Length; i++)
         {
+            Debug.Log(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
             if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr == 1)
             {
                 
-                leftdefense.transform.parent = character.transform;
+                leftdefense.transform.parent = players[i].transform;
                 leftdefense.transform.localPosition = new Vector2(-0.5f, 0);
             }
             else if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr == 2)
             {
                
-                updefense1.transform.parent = character.transform;
+                updefense1.transform.parent = players[i].transform;
                 updefense1.transform.localPosition = new Vector2(0, 0.5f);
             }
             else if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr == 3)
             {
                 
-                updefense2.transform.parent = character.transform;
+                updefense2.transform.parent = players[i].transform;
                 updefense2.transform.localPosition = new Vector2(0, 0.5f);
             }
             else if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr ==4)
             {
                 
-                rightdefense.transform.parent = character.transform;
+                rightdefense.transform.parent = players[i].transform;
                 rightdefense.transform.localPosition = new Vector2(0.5f, 0);
             }
         }
@@ -101,7 +105,13 @@ public class round5_test : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        
+        if(players.Length == 4 && !turnon)
+        {
+            DefenseSpawn();
+            turnon = true;
+        }
     }
     public void click()
     {

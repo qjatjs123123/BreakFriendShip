@@ -20,6 +20,7 @@ TagManager:
   - play
   - P5
   - left
+  - ghost
   layers:
   - Default
   - TransparentFX
