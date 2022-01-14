@@ -6,9 +6,11 @@ using Photon.Realtime;
 
 public class restartScene : MonoBehaviour
 {
+    public GameObject[] roundimg;
     private void Awake()
     {
         string curscene = "round" + R_NetWorkManager.round;
+        roundimg[R_NetWorkManager.round-1].SetActive(true);
         if(PhotonNetwork.IsMasterClient)
             PhotonNetwork.LoadLevel(curscene);
     }

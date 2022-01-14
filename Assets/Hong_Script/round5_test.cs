@@ -101,6 +101,10 @@ public class round5_test : MonoBehaviourPunCallbacks
 
 
     }
+    public void click123()
+    {
+        Debug.Log("ZZ");
+    }
 
     // Update is called once per frame
     void Update()

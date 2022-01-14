@@ -326,7 +326,7 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
         RoomPanel.SetActive(false);
         DontDestroyOnLoad(this.gameObject);
         DontDestroyOnLoad(cv);
-        PhotonNetwork.LoadLevel("round1");       
+        PhotonNetwork.LoadLevel("round4");       
     }
 
     // 강퇴확인 다이얼로그 No버튼을 눌렀을 때
