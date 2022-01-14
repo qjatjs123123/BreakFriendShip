@@ -507,7 +507,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 437612425}
         m_TargetAssemblyTypeName: test, Assembly-CSharp
         m_MethodName: click
         m_Mode: 1

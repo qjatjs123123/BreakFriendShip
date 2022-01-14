@@ -21,7 +21,7 @@ public class Ghost : MonoBehaviour
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length != 4)
-             return;
+            return;
         if (players.Length == 4 && !turnon)
             playerflipX();
         if (checkAxis() && checkdie())
@@ -79,8 +79,8 @@ public class Ghost : MonoBehaviour
     public bool checkAxis()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        if (players.Length == 4)
-        {
+       // if (players.Length == 4)
+        //{
             for(int i = 0; i<players.Length;i++)
             {
                 // 왼쪽 키를 누를 경우 True 반환 오른쪽 키를 누르는 경우 False 반환
@@ -88,7 +88,7 @@ public class Ghost : MonoBehaviour
                     return false;
             }
             return true;
-        }
+        //}
         return false;
     }
 }

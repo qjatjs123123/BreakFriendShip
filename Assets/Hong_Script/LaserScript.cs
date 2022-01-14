@@ -57,7 +57,7 @@ public class LaserScript : MonoBehaviourPun
                 PS = LocalPlayer.transform.GetComponent<PlayerScript>();
                 PhotonView collision_PV = hit.collider.transform.GetComponent<PlayerScript>().PV;               
                 PS.isDie = true;
-
+                R_NetWorkManager.player_die[collision_PV.OwnerActorNr - 1] += 1;
                 if (collision_PV.IsMine)
                 {
                     youdied.gameObject.SetActive(true);

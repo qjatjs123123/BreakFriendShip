@@ -10,13 +10,14 @@ public class Ghost_Trigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        Debug.Log(collision.tag);
         if (collision.tag == "ghost")
         {
             Debug.Log("½ÇÇà");
             wall.transform.position = Vector3.MoveTowards(wall.transform.position, target.transform.position, 10 * Time.deltaTime);
+            wall.SetActive(false);
         }
     }
-
+    
 
 }

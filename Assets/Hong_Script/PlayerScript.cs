@@ -24,7 +24,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
     Vector3 curPos;
     bool stream_isDie;
-
+    float axis;
     public AudioSource mysfx;
     public AudioClip jumpsfx;
 
@@ -55,18 +55,21 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         if (PV.IsMine)
         {
             /*죽었을 때 애니메이션 종료, 속도 0*/
-            if (isDie)
+            if (isDie && isGround)
             {
-                RB.velocity = Vector2.zero;
                 AN.SetBool("isRun", false);
                 AN.SetBool("isJump", false);
-                return;
+                Vector2 Direction = Vector2.zero;
+                RB.velocity = Direction;
             }
 
-            float axis = Input.GetAxisRaw("Horizontal");
-            RB.velocity = new Vector2(4 * axis, RB.velocity.y);
+            if (!isDie)
+            {
+                axis = Input.GetAxisRaw("Horizontal");
+                RB.velocity = new Vector2(4 * axis, RB.velocity.y);
+            }
 
-            if (axis != 0)
+            if (axis != 0 && !isDie)
             {
                 isRun = true;
                 AN.SetBool("isRun", true);
@@ -84,7 +87,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
             AN.SetBool("isJump", !isGround);
 
 
-            if (Input.GetKeyDown(KeyCode.Space) && isGround)
+            if (Input.GetKeyDown(KeyCode.Space) && isGround && !isDie)
             {
                 
                 PV.RPC("JumpRPC", RpcTarget.All);              

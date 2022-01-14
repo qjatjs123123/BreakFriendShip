@@ -21,6 +21,8 @@ TagManager:
   - P5
   - left
   - ghost
+  - main
+  - lobby
   layers:
   - Default
   - TransparentFX

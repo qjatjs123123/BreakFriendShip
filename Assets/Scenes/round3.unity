@@ -493,10 +493,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7280bffd0285442b232f48158e6260, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LimitTime: 60
+  LimitTime: 10
   ClockText:
   - {fileID: 1118301681}
   - {fileID: 1367623703}
+  youdied: {fileID: 732736805}
 --- !u!1 &45152741
 GameObject:
   m_ObjectHideFlags: 0

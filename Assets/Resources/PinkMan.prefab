@@ -339,6 +339,7 @@ MonoBehaviour:
   PV: {fileID: 5341347735643423327}
   NickNameText: {fileID: 9179243156028985958}
   isGround: 0
+  isRun: 0
   isDie: 0
   IsRound2_Trigger: 0
   IsRound2_Trigger2: 0

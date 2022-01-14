@@ -63,16 +63,17 @@ public class PlayerDie : MonoBehaviourPunCallbacks
     //DieArea ¡¯¿‘Ω√
     void OnTriggerEnter2D(Collider2D collision)
     {
-        PhotonView collision_PV = collision.transform.GetComponent<PlayerScript>().PV;
-        LocalPlayer = LocalPlayerObject();
-        PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
-        PS.isDie = true;
+        
         if (collision.tag == "Player")
         {
+            PhotonView collision_PV = collision.transform.GetComponent<PlayerScript>().PV;
+            LocalPlayer = LocalPlayerObject();
+            PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+            PS.isDie = true;
+            R_NetWorkManager.player_die[collision_PV.OwnerActorNr - 1] += 1;
             if (collision_PV.IsMine)
             {
                 youdied.gameObject.SetActive(true);
-                
             }
             else
                 someonedied.gameObject.SetActive(true);

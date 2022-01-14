@@ -86185,6 +86185,7 @@ MonoBehaviour:
   StatusTxt: {fileID: 943383473}
   RoomTxt: {fileID: 1091495065}
   selectnum: 0
+  cv: {fileID: 1502985988}
 --- !u!4 &1017723383
 Transform:
   m_ObjectHideFlags: 0

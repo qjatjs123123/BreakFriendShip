@@ -61,13 +61,13 @@ public class test : MonoBehaviourPunCallbacks
     }
     public void click()
     {
-        Debug.Log("클릭");
         PhotonNetwork.LoadLevel("Title");
+
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         /*로비패널, 룸패널 비활성화, 닉네임인풋 공백*/
-        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
         outimg.gameObject.SetActive(true);
 
     }

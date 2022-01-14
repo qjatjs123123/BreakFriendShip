@@ -2473,8 +2473,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: test, Assembly-CSharp
+      - m_Target: {fileID: 1322915441}
+        m_TargetAssemblyTypeName: round5_test, Assembly-CSharp
         m_MethodName: click
         m_Mode: 1
         m_Arguments:

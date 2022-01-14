@@ -39412,7 +39412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2090222464}
         m_TargetAssemblyTypeName: test, Assembly-CSharp
         m_MethodName: click
         m_Mode: 1
@@ -42440,6 +42440,7 @@ GameObject:
   - component: {fileID: 2054580553}
   - component: {fileID: 2054580555}
   - component: {fileID: 2054580556}
+  - component: {fileID: 2054580557}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: ghost
@@ -42552,7 +42553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FoundObjects: []
   shortDis: 0
-  speed: 0.05
+  speed: 0.0015
 --- !u!114 &2054580556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42573,6 +42574,27 @@ MonoBehaviour:
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   curscene: round6
+--- !u!50 &2054580557
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054580551}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &2090222463
 GameObject:
   m_ObjectHideFlags: 0

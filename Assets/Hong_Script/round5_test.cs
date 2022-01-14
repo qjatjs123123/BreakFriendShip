@@ -106,13 +106,13 @@ public class round5_test : MonoBehaviourPunCallbacks
     void Update()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-        
-        if(players.Length == 4 && !turnon)
+
+        if (players.Length == 4 && !turnon)
         {
             DefenseSpawn();
             turnon = true;
         }
-    }
+}
     public void click()
     {
         Debug.Log("Å¬¸¯");
