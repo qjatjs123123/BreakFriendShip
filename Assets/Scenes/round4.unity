@@ -3498,6 +3498,7 @@ GameObject:
   - component: {fileID: 977312729}
   - component: {fileID: 977312728}
   - component: {fileID: 977312727}
+  - component: {fileID: 977312730}
   m_Layer: 0
   m_Name: DieArea
   m_TagString: Untagged
@@ -3524,6 +3525,7 @@ MonoBehaviour:
   - {fileID: 1790526385}
   youdied: {fileID: 1060441740}
   someonedied: {fileID: 1198194713}
+  PV: {fileID: 977312730}
   curscene: round3
 --- !u!61 &977312728
 BoxCollider2D:
@@ -3565,6 +3567,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &977312730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 977312726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1026538784
 GameObject:
   m_ObjectHideFlags: 0

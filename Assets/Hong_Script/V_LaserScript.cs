@@ -15,6 +15,7 @@ public class V_LaserScript : MonoBehaviourPun
     public Image youdied;
     public Image someonedied;
 
+    public PhotonView PV;
     public int hits;
     bool turnon = false;
 
@@ -37,6 +38,28 @@ public class V_LaserScript : MonoBehaviourPun
 
 
     }
+    
+    [PunRPC]
+    void lazerhit(int index)
+    {
+        LocalPlayer = player.transform.GetComponent<round5_test>().character;
+        PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+        PS.isDie = true;
+        R_NetWorkManager.player_die[index - 1] += 1;
+
+        if (PS.PV.OwnerActorNr == index)
+            youdied.gameObject.SetActive(true);
+
+        else
+            someonedied.gameObject.SetActive(true);
+
+        if (PhotonNetwork.IsMasterClient && !turnon)
+        {
+            turnon = true;
+            Invoke("restart", 2);
+        }
+    }
+    
 
     // Update is called once per frame
     void Update()
@@ -47,23 +70,8 @@ public class V_LaserScript : MonoBehaviourPun
             /*turnon 쓴이유 rpc한번 호출하려고*/
             if (hit.collider.tag == "Player" && !turnon)
             {
-                LocalPlayer = player.transform.GetComponent<round5_test>().character;
-                PS = LocalPlayer.transform.GetComponent<PlayerScript>();
-                PhotonView collision_PV = hit.collider.transform.GetComponent<PlayerScript>().PV;
-                PS.isDie = true;
-                R_NetWorkManager.player_die[collision_PV.OwnerActorNr - 1] += 1;
-                if (collision_PV.IsMine)
-                {
-                    youdied.gameObject.SetActive(true);
-
-                }
-                else
-                    someonedied.gameObject.SetActive(true);
-                if (PhotonNetwork.IsMasterClient && !turnon)
-                {
-                    turnon = true;
-                    Invoke("restart", 2);
-                }
+                int actornum = hit.collider.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+                PV.RPC("lazerhit", RpcTarget.All, actornum);
                 return;
             }
             LaserPoints();

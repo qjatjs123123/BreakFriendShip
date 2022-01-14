@@ -135,6 +135,8 @@ GameObject:
   - component: {fileID: 9694280}
   - component: {fileID: 9694279}
   - component: {fileID: 9694278}
+  - component: {fileID: 9694283}
+  - component: {fileID: 9694282}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -229,6 +231,46 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &9694282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9694277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &9694283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9694277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7280bffd0285442b232f48158e6260, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LimitTime: 45
+  ClockText:
+  - {fileID: 1118301681}
+  - {fileID: 1367623703}
+  youdied: {fileID: 732736805}
+  PV: {fileID: 9694282}
 --- !u!1 &17897736
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,14 +500,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 35387304}
-  - component: {fileID: 35387305}
   m_Layer: 0
   m_Name: TimerLimitObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &35387304
 Transform:
   m_ObjectHideFlags: 0
@@ -483,23 +524,6 @@ Transform:
   m_Father: {fileID: 9694281}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &35387305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 35387303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7c7280bffd0285442b232f48158e6260, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LimitTime: 45
-  ClockText:
-  - {fileID: 1118301681}
-  - {fileID: 1367623703}
-  youdied: {fileID: 732736805}
 --- !u!1 &45152741
 GameObject:
   m_ObjectHideFlags: 0
@@ -69025,6 +69049,7 @@ GameObject:
   - component: {fileID: 978654494}
   - component: {fileID: 978654496}
   - component: {fileID: 978654495}
+  - component: {fileID: 978654497}
   m_Layer: 0
   m_Name: DieArea
   m_TagString: Untagged
@@ -69065,6 +69090,7 @@ MonoBehaviour:
   - {fileID: 422103024}
   youdied: {fileID: 732736805}
   someonedied: {fileID: 848104790}
+  PV: {fileID: 978654497}
   curscene: round3
 --- !u!61 &978654496
 BoxCollider2D:
@@ -69092,6 +69118,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &978654497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978654493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &988605335
 GameObject:
   m_ObjectHideFlags: 0

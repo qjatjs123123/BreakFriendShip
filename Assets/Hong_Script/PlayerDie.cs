@@ -6,14 +6,12 @@ using Photon.Realtime;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class PlayerDie : MonoBehaviourPunCallbacks
+public class PlayerDie : MonoBehaviourPun
 {
     public Transform[] SpawnPosition;
-
-
-
     public Image youdied;
     public Image someonedied;
+    public PhotonView PV;
     
     public string curscene;
     bool turnon = false;
@@ -60,29 +58,36 @@ public class PlayerDie : MonoBehaviourPunCallbacks
         return null;
     }
 
+    [PunRPC]
+    void hitplayer(int index)
+    {
+        LocalPlayer = LocalPlayerObject();
+        PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+        PS.isDie = true;
+
+        /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/
+        R_NetWorkManager.player_die[index - 1] += 1;
+        if (index == PS.PV.OwnerActorNr)  
+            youdied.gameObject.SetActive(true);
+        
+        else
+            someonedied.gameObject.SetActive(true);
+
+        if (PhotonNetwork.IsMasterClient && !turnon)
+        {
+            turnon = true;
+            Invoke("restart", 2);
+        }
+    }
+
     //DieArea 진입시
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        /*DieArea 충돌된 태그가 플레이어면*/
         if (collision.tag == "Player")
         {
-            PhotonView collision_PV = collision.transform.GetComponent<PlayerScript>().PV;
-            LocalPlayer = LocalPlayerObject();
-            PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
-            PS.isDie = true;
-            R_NetWorkManager.player_die[collision_PV.OwnerActorNr - 1] += 1;
-            if (collision_PV.IsMine)
-            {
-                youdied.gameObject.SetActive(true);
-            }
-            else
-                someonedied.gameObject.SetActive(true);
-
-            if (PhotonNetwork.IsMasterClient && !turnon)
-            {
-                turnon = true;
-                Invoke("restart", 2);
-            }
+            int actornum = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+            PV.RPC("hitplayer", RpcTarget.All, actornum);
 
         }
     }

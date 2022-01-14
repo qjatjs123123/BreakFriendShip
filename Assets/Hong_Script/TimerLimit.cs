@@ -6,21 +6,32 @@ using Photon.Pun;
 using Photon.Realtime;
 
 
-public class TimerLimit : MonoBehaviour
+public class TimerLimit : MonoBehaviourPunCallbacks
 {
     public float LimitTime;
     public Text[] ClockText;
     bool turnon = false;
     public Image youdied;
+    bool synon = false;
+    public PhotonView PV;
+    
     GameObject LocalPlayer = null;
     // Start is called before the first frame update
     void Start()
     {
-        
+        // 시작할 떄 시간 동기화
+        PV.RPC("synonfunc", RpcTarget.AllViaServer);
     }
     void restart()
     {
         PhotonNetwork.LoadLevel("LoadingScene");
+    }
+
+    /*시간 동기화 맞추기 위해서*/
+    [PunRPC]
+    void synonfunc()
+    {
+        synon = true;
     }
 
     public GameObject LocalPlayerObject()
@@ -38,22 +49,32 @@ public class TimerLimit : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*동기화 되기전이면 빠져나간다*/
+        if (!synon)
+            return;
+
+        /*동기화 되고 시간이 0이고 turnon스위치가 false라면 실행, turnon 쓰는 이유는
+         한번만 실행되기 위해서*/
         if (ClockText[1].text == "0" && !turnon)
         {
+            //죽었을 때 사용하는 코드
             LocalPlayer = LocalPlayerObject();
             PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
             PS.isDie = true;
-
-            youdied.gameObject.SetActive(true);
+            gameObject.SetActive(false);
+            
             if (PhotonNetwork.IsMasterClient && !turnon)
             {
                 Invoke("restart", 2);
             }
             turnon = true;
         }
+
+        /*만약 시간이 0초라면 빠져나감, 아래문 실행되게 하지 않기위해서, */
         if (ClockText[1].text == "0")
             return;
 
+        /*시간이 0초 아니라면 분, 초 표시*/
         else
         {
             LimitTime -= Time.deltaTime;
