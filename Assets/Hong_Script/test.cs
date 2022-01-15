@@ -10,6 +10,7 @@ public class test : MonoBehaviourPunCallbacks
     public Transform[] SpawnPosition;
     public Text[] PlayersText;
     public Image outimg;
+    public Image regameimg;
     public int num;
 
     // Start is called before the first frame update
@@ -57,12 +58,17 @@ public class test : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsMasterClient)
+            regameimg.gameObject.SetActive(true);
     }
     public void click()
     {
         PhotonNetwork.LoadLevel("Title");
 
+    }
+    public void restart()
+    {
+        PhotonNetwork.LoadLevel("LoadingScene");
     }
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {

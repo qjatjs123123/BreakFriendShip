@@ -17,6 +17,8 @@ public class round5_test : MonoBehaviourPunCallbacks
     public GameObject updefense2;
     public GameObject leftdefense;
     public GameObject rightdefense;
+
+    public Image regameimg;
     public int num;
     GameObject defense;
     int player_index;
@@ -101,9 +103,9 @@ public class round5_test : MonoBehaviourPunCallbacks
 
 
     }
-    public void click123()
+    public void restart()
     {
-        Debug.Log("ZZ");
+        PhotonNetwork.LoadLevel("LoadingScene");
     }
 
     // Update is called once per frame
@@ -116,7 +118,9 @@ public class round5_test : MonoBehaviourPunCallbacks
             DefenseSpawn();
             turnon = true;
         }
-}
+        if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsMasterClient)
+            regameimg.gameObject.SetActive(true);
+    }
     public void click()
     {
         Debug.Log("Å¬¸¯");
