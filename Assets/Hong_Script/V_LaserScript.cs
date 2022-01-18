@@ -14,7 +14,8 @@ public class V_LaserScript : MonoBehaviourPun
     GameObject LocalPlayer = null;
     public Image youdied;
     public Image someonedied;
-
+    public GameObject Elevator;
+    public Transform Elevator_Spawn;
     public PhotonView PV;
     public int hits;
     bool turnon = false;
@@ -32,11 +33,15 @@ public class V_LaserScript : MonoBehaviourPun
         //PhotonNetwork.LoadLevel("LoadingScene");
         PV.RPC("respawn", RpcTarget.AllViaServer);
     }
+
+    void notDemage() => turnon = false;
+
     [PunRPC]
     void respawn()
     {
+        Elevator.transform.position = new Vector3(Elevator_Spawn.position.x, Elevator_Spawn.position.y, Elevator_Spawn.position.z);
         GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round1>().init_round();
-        //turnon = false;
+        Invoke("notDemage", 0.5f);
     }
     void Awake()
     {
@@ -47,13 +52,19 @@ public class V_LaserScript : MonoBehaviourPun
     [PunRPC]
     void lazerhit(int index)
     {
+        if (youdied.gameObject.activeSelf == true || someonedied.gameObject.activeSelf == true)
+            return;
+        turnon = true;
         LocalPlayer = player.transform.GetComponent<round5_test>().character;
         PS = LocalPlayer.transform.GetComponent<PlayerScript>();
         PS.isDie = true;
-        R_NetWorkManager.player_die[index - 1] += 1;
+
 
         if (PS.PV.OwnerActorNr == index)
+        {
             youdied.gameObject.SetActive(true);
+            R_NetWorkManager.player_die[index - 1] += 1;
+        }
 
         else
             someonedied.gameObject.SetActive(true);
@@ -64,20 +75,21 @@ public class V_LaserScript : MonoBehaviourPun
             Invoke("restart", 2);
         }
     }
-    
 
+    PhotonView collider_pv;
     // Update is called once per frame
     void Update()
     {
         firstLaser();
         if (hit.collider != null)
         {
+            if (hit.collider.tag == "Player")
+                collider_pv = hit.collider.transform.GetComponent<PlayerScript>().PV;
             /*turnon 쓴이유 rpc한번 호출하려고*/
-            if (hit.collider.tag == "Player" && !turnon)
+            if (hit.collider.tag == "Player" && PV.IsMine && !turnon)
             {
                 int actornum = hit.collider.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
                 PV.RPC("lazerhit", RpcTarget.All, actornum);
-                turnon = true;
                 return;
             }
             LaserPoints();

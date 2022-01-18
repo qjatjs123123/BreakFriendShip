@@ -14,6 +14,7 @@ public class init_round4 : MonoBehaviour
     public Transform applespawn;
     public GameObject apple;
     public GameObject Typingeffect;
+    public GameObject apple_siluet_obj;
 
     public void init_round()
     {
@@ -35,6 +36,8 @@ public class init_round4 : MonoBehaviour
         Typingeffect.transform.GetComponent<Typingeffect>().Start();
         Typingeffect.transform.GetComponent<Typingeffect>().Ghost.transform.rotation = Quaternion.Euler(0, 180, 0);
         apple.transform.parent = null;
+        apple_siluet_obj.transform.GetComponent<SpriteRenderer>().sprite = apple_silute;
+        apple.SetActive(true);
     }
     // Start is called before the first frame update
     void Start()

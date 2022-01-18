@@ -12,6 +12,7 @@ public class init_round6 : MonoBehaviour
     public Sprite apple_silute;
     public Transform applespawn;
     public Transform ghostspawn;
+    public GameObject apple_siluet_obj;
     public GameObject apple;
     public GameObject ghost;
     public GameObject wall1;
@@ -36,6 +37,7 @@ public class init_round6 : MonoBehaviour
         ghost.transform.position = new Vector3(ghostspawn.position.x, ghostspawn.position.y, ghostspawn.position.z);
         wall1.SetActive(true);
         wall2.SetActive(true);
+        apple_siluet_obj.transform.GetComponent<SpriteRenderer>().sprite = apple_silute;
 
         for (int i = 0; i < players.Length; i++)
         {

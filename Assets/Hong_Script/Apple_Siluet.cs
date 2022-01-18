@@ -53,8 +53,8 @@ public class Apple_Siluet : MonoBehaviourPunCallbacks
         {
             PV.RPC("isfruit", RpcTarget.AllViaServer, playerindex());
             apple_silute.GetComponent<SpriteRenderer>().sprite = fruit;
-            Destroy(apple);
-            //apple.SetActive(false);
+            //Destroy(apple);
+            apple.SetActive(false);
         }
 
     }

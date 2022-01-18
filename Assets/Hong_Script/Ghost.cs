@@ -17,8 +17,7 @@ public class Ghost : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
         if (players.Length != 4)
@@ -28,9 +27,13 @@ public class Ghost : MonoBehaviour
         if (checkAxis() && checkdie())
         {
             GameObject p = shortestPlayer();
-            
             ghost.transform.position = Vector3.MoveTowards(ghost.transform.position, p.transform.position, 0.05f);
         }
+    }
+    // Update is called once per frame
+    void Update()
+    {
+
 
     }
     public bool checkdie()

@@ -1044,6 +1044,7 @@ MonoBehaviour:
   someonedied: {fileID: 1139301700}
   PV: {fileID: 214396921}
   curscene: round6
+  apple: {fileID: 114815117}
 --- !u!114 &214396921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,6 +1298,7 @@ MonoBehaviour:
   someonedied: {fileID: 1139301700}
   PV: {fileID: 262257635}
   curscene: round6
+  apple: {fileID: 114815117}
 --- !u!114 &262257635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40008,6 +40010,7 @@ MonoBehaviour:
   someonedied: {fileID: 1139301700}
   PV: {fileID: 891429574}
   curscene: round6
+  apple: {fileID: 114815117}
 --- !u!114 &891429574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40317,6 +40320,7 @@ MonoBehaviour:
   apple_silute: {fileID: 21300000, guid: 016fbaac7b70faf468b277d7158dbbbe, type: 3}
   applespawn: {fileID: 974136001}
   ghostspawn: {fileID: 875101089}
+  apple_siluet_obj: {fileID: 1895670798}
   apple: {fileID: 114815117}
   ghost: {fileID: 2054580551}
   wall1: {fileID: 22474933}
@@ -44260,6 +44264,7 @@ MonoBehaviour:
   someonedied: {fileID: 1139301700}
   PV: {fileID: 2054580558}
   curscene: round6
+  apple: {fileID: 114815117}
 --- !u!50 &2054580557
 Rigidbody2D:
   serializedVersion: 4

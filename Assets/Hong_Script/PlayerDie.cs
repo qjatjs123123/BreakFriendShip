@@ -17,6 +17,7 @@ public class PlayerDie : MonoBehaviourPun
     public string curscene;
     bool turnon = false;
     GameObject LocalPlayer = null;
+    public GameObject apple;
 
 
 
@@ -37,7 +38,8 @@ public class PlayerDie : MonoBehaviourPun
         //PhotonNetwork.LoadLevel("LoadingScene");
         // SceneManager.LoadScene(curscene);
     }
-    //[PunRPC]
+
+    /*라운드에 맞는 초기화함수 호출*/
     void respawn()
     {
         if (R_NetWorkManager.round == 1 || R_NetWorkManager.round == 5)
@@ -48,9 +50,12 @@ public class PlayerDie : MonoBehaviourPun
             GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round4>().init_round();
         else if (R_NetWorkManager.round == 6)
             GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round6>().init_round();
-
+        Debug.Log("respawn함수");
         turnon = false;
+        apple.SetActive(true);
     }
+
+    /*현재 로컬 포지션 반환함수*/
     public Transform SelectSpwanPosition()
     {
         for (int i = 0; i < PhotonNetwork.PlayerList.Length; i++)
@@ -78,19 +83,31 @@ public class PlayerDie : MonoBehaviourPun
     [PunRPC]
     void hitplayer(int index)
     {
+        turnon = true;
+        /*여러명이 동시에 떨어졌을 때 죽는 화면 한번만 출력되도록 하기 위해서 사용*/
+        if (youdied.gameObject.activeSelf == true || someonedied.gameObject.activeSelf == true)
+            return;
+
+        /*로컬 캐릭터 isDle함으로써 못움직이게 하기*/
         LocalPlayer = LocalPlayerObject();
         PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
         PS.isDie = true;
 
-        /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/
-        R_NetWorkManager.player_die[index - 1] += 1;
+        /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/     
         if (index == PS.PV.OwnerActorNr)
+        {
             youdied.gameObject.SetActive(true);
+            R_NetWorkManager.player_die[index - 1] += 1;
+        }
+
 
         else
             someonedied.gameObject.SetActive(true);
 
-        Invoke("respawn", 2);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Invoke("restart", 2);
+        }
 
         //if (PhotonNetwork.IsMasterClient && !turnon)
         //{
@@ -99,18 +116,20 @@ public class PlayerDie : MonoBehaviourPun
         //}
     }
 
+
     //DieArea 진입시
     void OnTriggerEnter2D(Collider2D collision)
     {
-        /*DieArea 충돌된 태그가 플레이어면*/
-        if (collision.tag == "Player" && !turnon)
+        LocalPlayer = LocalPlayerObject();
+        PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+        PhotonView collision_pv = collision.transform.GetComponent<PlayerScript>().PV;
+        
+        /*DieArea 충돌된 태그가 플레이어 중심으로 RPC호출*/
+        if (collision.tag == "Player" && collision_pv == PS.PV && !turnon)
         {
             int actornum = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
             PV.RPC("hitplayer", RpcTarget.All, actornum);
-            turnon = true;
+           
         }
     }
-
-
-
 }

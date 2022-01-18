@@ -69174,6 +69174,7 @@ MonoBehaviour:
   someonedied: {fileID: 848104790}
   PV: {fileID: 978654497}
   curscene: round3
+  apple: {fileID: 100200878}
 --- !u!61 &978654496
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70066,6 +70067,7 @@ MonoBehaviour:
   - {fileID: 288847006}
   - {fileID: 836378233}
   apple_silute: {fileID: 21300000, guid: 016fbaac7b70faf468b277d7158dbbbe, type: 3}
+  apple_siluet_obj: {fileID: 2035241225}
 --- !u!4 &1115572794
 Transform:
   m_ObjectHideFlags: 0

@@ -17,6 +17,7 @@ public class init_round3 : MonoBehaviourPun
     public GameObject applespawn;
     public Image[] IsFruit;
     public Sprite apple_silute;
+    public GameObject apple_siluet_obj;
     // Start is called before the first frame update
 
     public void init_round()
@@ -39,6 +40,8 @@ public class init_round3 : MonoBehaviourPun
         someonedied.gameObject.SetActive(false);
         applespawn.transform.GetComponent<Apple_random_Spawn>().apple_respawn();
         apple.transform.parent = null;
+        apple.SetActive(true);
+        apple_siluet_obj.transform.GetComponent<SpriteRenderer>().sprite = apple_silute;
     }
     void Start()
     {
