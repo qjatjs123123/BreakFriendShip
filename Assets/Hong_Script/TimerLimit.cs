@@ -10,10 +10,12 @@ public class TimerLimit : MonoBehaviourPunCallbacks
 {
     public float LimitTime;
     public Text[] ClockText;
-    bool turnon = false;
+    public bool turnon = false;
     public Image youdied;
     bool synon = false;
     public PhotonView PV;
+    public test test;
+
     
     GameObject LocalPlayer = null;
     // Start is called before the first frame update
@@ -24,7 +26,14 @@ public class TimerLimit : MonoBehaviourPunCallbacks
     }
     void restart()
     {
-        PhotonNetwork.LoadLevel("LoadingScene");
+        //PhotonNetwork.LoadLevel("LoadingScene");
+        PV.RPC("respawn", RpcTarget.AllViaServer);
+    }
+
+    [PunRPC]
+    void respawn()
+    {
+        GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round3>().init_round();
     }
 
     /*시간 동기화 맞추기 위해서*/
@@ -61,12 +70,15 @@ public class TimerLimit : MonoBehaviourPunCallbacks
             LocalPlayer = LocalPlayerObject();
             PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
             PS.isDie = true;
-            gameObject.SetActive(false);
             
+            youdied.gameObject.SetActive(true);
+
             if (PhotonNetwork.IsMasterClient && !turnon)
-            {
+            {             
                 Invoke("restart", 2);
             }
+
+
             turnon = true;
         }
 

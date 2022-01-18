@@ -24,6 +24,13 @@ public class Apple_random_Spawn : MonoBehaviourPunCallbacks
         
     }
 
+    public void apple_respawn()
+    {
+        int random = Random.Range(0, 3);
+        Transform tr = SpawnPosition[random].transform;
+        apple.transform.position = new Vector3(tr.position.x, tr.position.y, tr.position.z);
+    }
+
     // Update is called once per frame
     void Update()
     {

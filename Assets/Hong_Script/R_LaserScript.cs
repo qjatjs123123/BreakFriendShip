@@ -29,7 +29,14 @@ public class R_LaserScript : MonoBehaviourPun
     }
     void restart()
     {
-        PhotonNetwork.LoadLevel("LoadingScene");
+        //PhotonNetwork.LoadLevel("LoadingScene");
+        PV.RPC("respawn", RpcTarget.AllViaServer);
+    }
+    [PunRPC]
+    void respawn()
+    {
+        GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round1>().init_round();
+        turnon = false;
     }
     void Awake()
     {
@@ -53,9 +60,9 @@ public class R_LaserScript : MonoBehaviourPun
         else
             someonedied.gameObject.SetActive(true);
 
-        if (PhotonNetwork.IsMasterClient && !turnon)
+        if (PhotonNetwork.IsMasterClient)
         {
-            turnon = true;
+            
             Invoke("restart", 2);
         }
     }
@@ -72,6 +79,7 @@ public class R_LaserScript : MonoBehaviourPun
             {
                 int actornum = hit.collider.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
                 PV.RPC("lazerhit", RpcTarget.All, actornum);
+                turnon = true;
                 return;
             }
             LaserPoints();

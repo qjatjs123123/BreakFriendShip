@@ -9,6 +9,7 @@ public class Ghost : MonoBehaviour
      GameObject player;
     bool IsLeft = true;
     public float shortDis;
+    public GameObject ghost;
     public float speed;
     bool turnon = false;
     void Start()
@@ -28,7 +29,7 @@ public class Ghost : MonoBehaviour
         {
             GameObject p = shortestPlayer();
             
-            transform.position = Vector3.MoveTowards(gameObject.transform.position, p.transform.position, speed);
+            ghost.transform.position = Vector3.MoveTowards(ghost.transform.position, p.transform.position, 0.05f);
         }
 
     }
@@ -79,16 +80,16 @@ public class Ghost : MonoBehaviour
     public bool checkAxis()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-       // if (players.Length == 4)
-        //{
-            for(int i = 0; i<players.Length;i++)
+        if (players.Length == 4)
+        {
+            for (int i = 0; i<players.Length;i++)
             {
                 // 왼쪽 키를 누를 경우 True 반환 오른쪽 키를 누르는 경우 False 반환
                 if (players[i].transform.GetComponent<PlayerScript>().SR.flipX)
                     return false;
             }
             return true;
-        //}
+        }
         return false;
     }
 }

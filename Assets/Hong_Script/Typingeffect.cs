@@ -27,11 +27,8 @@ public class Typingeffect : MonoBehaviour
     // Start is called before the first frame update
 
     /*다시 시작함수*/
-    void restart()
-    {
-        PhotonNetwork.LoadLevel(curscene);
-    }
-    private void Start()
+    
+    public void Start()
     {
         
         /*방장 이면*/
@@ -52,11 +49,25 @@ public class Typingeffect : MonoBehaviour
         {
             if (!PS.isGround || PS.isRun)
             {
-                PV.RPC("diefunc", RpcTarget.All,PS.PV.OwnerActorNr);
-                
-                
+                PV.RPC("diefunc", RpcTarget.All,PS.PV.OwnerActorNr);           
             }
         }
+    }
+
+    void restart()
+    {
+        //PhotonNetwork.LoadLevel("LoadingScene");
+        PV.RPC("respawn", RpcTarget.AllViaServer);
+        
+    }
+
+    [PunRPC]
+    void respawn()
+    {
+        GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round4>().init_round();
+        gameObject.SetActive(true);
+        Start();
+        Ghost.transform.rotation = Quaternion.Euler(0, 180, 0);
     }
     /*랜덤 넘버 생성 함수*/
     void makerandom()
@@ -84,7 +95,7 @@ public class Typingeffect : MonoBehaviour
     /*코루틴 함수로 타이핑 효과 내기*/
     IEnumerator countTime(float[] random)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
        
         for (int i = 0; i<= m_text.Length; i++)
         {

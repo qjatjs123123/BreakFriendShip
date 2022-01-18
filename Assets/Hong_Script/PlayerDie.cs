@@ -13,9 +13,12 @@ public class PlayerDie : MonoBehaviourPun
     public Image someonedied;
     public PhotonView PV;
     
+
     public string curscene;
     bool turnon = false;
     GameObject LocalPlayer = null;
+
+
 
     private void Awake()
     {
@@ -30,9 +33,23 @@ public class PlayerDie : MonoBehaviourPun
  
     void restart()
     {
-
-        PhotonNetwork.LoadLevel("LoadingScene");
+        PV.RPC("respawn", RpcTarget.AllViaServer);
+        //PhotonNetwork.LoadLevel("LoadingScene");
         // SceneManager.LoadScene(curscene);
+    }
+    //[PunRPC]
+    void respawn()
+    {
+        if (R_NetWorkManager.round == 1 || R_NetWorkManager.round == 5)
+            GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round1>().init_round();
+        else if (R_NetWorkManager.round == 3)
+            GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round3>().init_round();
+        else if (R_NetWorkManager.round == 4)
+            GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round4>().init_round();
+        else if (R_NetWorkManager.round == 6)
+            GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round6>().init_round();
+
+        turnon = false;
     }
     public Transform SelectSpwanPosition()
     {
@@ -67,28 +84,30 @@ public class PlayerDie : MonoBehaviourPun
 
         /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/
         R_NetWorkManager.player_die[index - 1] += 1;
-        if (index == PS.PV.OwnerActorNr)  
+        if (index == PS.PV.OwnerActorNr)
             youdied.gameObject.SetActive(true);
-        
+
         else
             someonedied.gameObject.SetActive(true);
 
-        if (PhotonNetwork.IsMasterClient && !turnon)
-        {
-            turnon = true;
-            Invoke("restart", 2);
-        }
+        Invoke("respawn", 2);
+
+        //if (PhotonNetwork.IsMasterClient && !turnon)
+        //{
+        //    turnon = true;
+        //    Invoke("restart", 2);
+        //}
     }
 
     //DieArea 진입시
     void OnTriggerEnter2D(Collider2D collision)
     {
         /*DieArea 충돌된 태그가 플레이어면*/
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" && !turnon)
         {
             int actornum = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
             PV.RPC("hitplayer", RpcTarget.All, actornum);
-
+            turnon = true;
         }
     }
 

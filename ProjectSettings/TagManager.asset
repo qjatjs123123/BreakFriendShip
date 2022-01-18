@@ -23,6 +23,7 @@ TagManager:
   - ghost
   - main
   - lobby
+  - init
   layers:
   - Default
   - TransparentFX

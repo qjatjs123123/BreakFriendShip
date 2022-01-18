@@ -61,6 +61,8 @@ MonoBehaviour:
   - lazerhit
   - hitplayer
   - moveElevator
+  - Synturnon
+  - respawn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

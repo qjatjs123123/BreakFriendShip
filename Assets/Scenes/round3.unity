@@ -270,8 +270,10 @@ MonoBehaviour:
   ClockText:
   - {fileID: 1118301681}
   - {fileID: 1367623703}
+  turnon: 0
   youdied: {fileID: 732736805}
   PV: {fileID: 9694282}
+  test: {fileID: 0}
 --- !u!1 &17897736
 GameObject:
   m_ObjectHideFlags: 0
@@ -69992,6 +69994,92 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1115572791
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115572794}
+  - component: {fileID: 1115572793}
+  - component: {fileID: 1115572792}
+  m_Layer: 0
+  m_Name: init_round3
+  m_TagString: init
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1115572792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115572791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1115572793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115572791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e22262461320054dacaf090a5121ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LimitTime: 45
+  ClockText:
+  - {fileID: 1118301681}
+  - {fileID: 1367623703}
+  tr:
+  - {fileID: 305780989}
+  - {fileID: 1007396758}
+  - {fileID: 766750861}
+  - {fileID: 422103024}
+  TL: {fileID: 9694283}
+  youdied: {fileID: 732736805}
+  someonedied: {fileID: 848104790}
+  apple: {fileID: 100200878}
+  applespawn: {fileID: 1615666656}
+  IsFruit:
+  - {fileID: 1534446400}
+  - {fileID: 807916230}
+  - {fileID: 288847006}
+  - {fileID: 836378233}
+  apple_silute: {fileID: 21300000, guid: 016fbaac7b70faf468b277d7158dbbbe, type: 3}
+--- !u!4 &1115572794
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1115572791}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -99.680214, y: -19.045824, z: -37.236797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1118301679
 GameObject:
   m_ObjectHideFlags: 0
@@ -71730,7 +71818,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1964321279}
         m_TargetAssemblyTypeName: test, Assembly-CSharp
         m_MethodName: restart
         m_Mode: 1

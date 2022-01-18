@@ -902,6 +902,7 @@ GameObject:
   - component: {fileID: 214396916}
   - component: {fileID: 214396919}
   - component: {fileID: 214396920}
+  - component: {fileID: 214396921}
   m_Layer: 0
   m_Name: 2_Fan
   m_TagString: Untagged
@@ -1025,6 +1026,7 @@ MonoBehaviour:
   speed: 2.5
   isXmove: 1
   Rightmove: 0
+  turnon: 0
 --- !u!114 &214396920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,8 +1042,30 @@ MonoBehaviour:
   SpawnPosition: []
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
-  PV: {fileID: 0}
+  PV: {fileID: 214396921}
   curscene: round6
+--- !u!114 &214396921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 214396914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &227955056
 GameObject:
   m_ObjectHideFlags: 0
@@ -1131,6 +1155,7 @@ GameObject:
   - component: {fileID: 262257630}
   - component: {fileID: 262257633}
   - component: {fileID: 262257634}
+  - component: {fileID: 262257635}
   m_Layer: 0
   m_Name: 3_Fan
   m_TagString: Untagged
@@ -1146,7 +1171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 262257628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -116.3, y: -16.8, z: 0}
+  m_LocalPosition: {x: -116.21, y: -16.8, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 1461252754}
@@ -1254,6 +1279,7 @@ MonoBehaviour:
   speed: 2
   isXmove: 1
   Rightmove: 1
+  turnon: 0
 --- !u!114 &262257634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,8 +1295,30 @@ MonoBehaviour:
   SpawnPosition: []
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
-  PV: {fileID: 0}
+  PV: {fileID: 262257635}
   curscene: round6
+--- !u!114 &262257635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262257628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &310423644
 GameObject:
   m_ObjectHideFlags: 0
@@ -39818,6 +39866,7 @@ GameObject:
   - component: {fileID: 891429569}
   - component: {fileID: 891429572}
   - component: {fileID: 891429573}
+  - component: {fileID: 891429574}
   m_Layer: 0
   m_Name: 1_Fan
   m_TagString: Untagged
@@ -39941,6 +39990,7 @@ MonoBehaviour:
   speed: 3
   isXmove: 0
   Rightmove: 0
+  turnon: 0
 --- !u!114 &891429573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39956,8 +40006,30 @@ MonoBehaviour:
   SpawnPosition: []
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
-  PV: {fileID: 0}
+  PV: {fileID: 891429574}
   curscene: round6
+--- !u!114 &891429574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 891429567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &961556049
 GameObject:
   m_ObjectHideFlags: 0
@@ -40200,6 +40272,91 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 988629072}
   m_CullTransparentMesh: 1
+--- !u!1 &996683549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 996683552}
+  - component: {fileID: 996683551}
+  - component: {fileID: 996683550}
+  m_Layer: 0
+  m_Name: init_round6
+  m_TagString: init
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &996683550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996683549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4535520fe7c73044b34643c47580746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tr:
+  - {fileID: 1263708954}
+  - {fileID: 339269498}
+  - {fileID: 603721256}
+  - {fileID: 175254077}
+  youdied: {fileID: 403826791}
+  someonedied: {fileID: 1139301700}
+  IsFruit:
+  - {fileID: 678947535}
+  - {fileID: 227955058}
+  - {fileID: 645824360}
+  - {fileID: 1019492536}
+  apple_silute: {fileID: 21300000, guid: 016fbaac7b70faf468b277d7158dbbbe, type: 3}
+  applespawn: {fileID: 974136001}
+  ghostspawn: {fileID: 875101089}
+  apple: {fileID: 114815117}
+  ghost: {fileID: 2054580551}
+  wall1: {fileID: 22474933}
+  wall2: {fileID: 13893944}
+--- !u!114 &996683551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996683549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 17
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!4 &996683552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996683549}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -99.680214, y: -19.045824, z: -37.236797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014762845
 GameObject:
   m_ObjectHideFlags: 0
@@ -41988,6 +42145,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1745861152}
   wall: {fileID: 13893944}
+  saw: []
+  PV: {fileID: 0}
 --- !u!1 &1461252753
 GameObject:
   m_ObjectHideFlags: 0
@@ -42037,6 +42196,7 @@ GameObject:
   - component: {fileID: 1464267020}
   - component: {fileID: 1464267021}
   - component: {fileID: 1464267022}
+  - component: {fileID: 1464267023}
   m_Layer: 0
   m_Name: 1_Trigger
   m_TagString: Untagged
@@ -42098,6 +42258,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 310423644}
   wall: {fileID: 22474933}
+  saw:
+  - {fileID: 891429567}
+  - {fileID: 214396914}
+  - {fileID: 262257628}
+  PV: {fileID: 1464267023}
+--- !u!114 &1464267023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464267019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1467610649
 GameObject:
   m_ObjectHideFlags: 0
@@ -43157,7 +43344,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 2090222464}
         m_TargetAssemblyTypeName: test, Assembly-CSharp
         m_MethodName: restart
         m_Mode: 1
@@ -43937,6 +44124,7 @@ GameObject:
   - component: {fileID: 2054580555}
   - component: {fileID: 2054580556}
   - component: {fileID: 2054580557}
+  - component: {fileID: 2054580558}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: ghost
@@ -44049,7 +44237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FoundObjects: []
   shortDis: 0
-  speed: 0.0015
+  ghost: {fileID: 2054580551}
+  speed: 0.05
 --- !u!114 &2054580556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44069,7 +44258,7 @@ MonoBehaviour:
   - {fileID: 175254077}
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
-  PV: {fileID: 0}
+  PV: {fileID: 2054580558}
   curscene: round6
 --- !u!50 &2054580557
 Rigidbody2D:
@@ -44092,6 +44281,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2054580558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2054580551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &2090222463
 GameObject:
   m_ObjectHideFlags: 0

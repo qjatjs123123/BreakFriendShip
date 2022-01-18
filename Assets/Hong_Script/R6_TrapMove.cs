@@ -16,7 +16,11 @@ public class R6_TrapMove : MonoBehaviour
     [SerializeField]
     private bool Rightmove = false;
 
+    public bool turnon = false;
 
+    private float runningTime = 0f;
+    private float yPos = 0f;
+    private float xPos = 0f;
     void Start()
     {
         pos = transform.position;
@@ -24,6 +28,8 @@ public class R6_TrapMove : MonoBehaviour
 
     void Update()
     {
+        if (!turnon)
+            return;
         if (isXmove) 
         {
             if(Rightmove)
@@ -37,18 +43,22 @@ public class R6_TrapMove : MonoBehaviour
 
     private void moveX() {
         Vector3 vectorPos = pos;
-        vectorPos.x += delta * Mathf.Sin(Time.time * speed);
+        runningTime += Time.deltaTime * speed;
+        vectorPos.x += Mathf.Sin(runningTime) * delta;
         transform.position = vectorPos;
     }
     private void RmoveX()
     {
         Vector3 vectorPos = pos;
-        vectorPos.x -= delta * Mathf.Sin(Time.time * speed);
+        runningTime += Time.deltaTime * speed;
+        vectorPos.x -= Mathf.Sin(runningTime) * delta;
         transform.position = vectorPos;
+
     }
     private void moveY() {
         Vector3 vectorPos = pos;
-        vectorPos.y += delta * Mathf.Sin(Time.time * speed);
+        runningTime += Time.deltaTime * speed;
+        vectorPos.y += Mathf.Sin(runningTime) * delta;
         transform.position = vectorPos;
     }
 }

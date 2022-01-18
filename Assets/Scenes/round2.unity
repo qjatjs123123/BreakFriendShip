@@ -4752,7 +4752,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 365049194}
         m_TargetAssemblyTypeName: test, Assembly-CSharp
         m_MethodName: restart
         m_Mode: 1
