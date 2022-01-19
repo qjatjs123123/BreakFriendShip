@@ -878,6 +878,7 @@ MonoBehaviour:
   applespawn: {fileID: 279233457}
   apple: {fileID: 763955030}
   apple_siluet_obj: {fileID: 1006823924}
+  player: {fileID: 1322915440}
 --- !u!114 &216826243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4832,6 +4833,7 @@ MonoBehaviour:
   rightdefense: {fileID: 663250119}
   regameimg: {fileID: 215174446}
   num: 5
+  arr: 00000000000000000000000000000000
 --- !u!4 &1322915442
 Transform:
   m_ObjectHideFlags: 0

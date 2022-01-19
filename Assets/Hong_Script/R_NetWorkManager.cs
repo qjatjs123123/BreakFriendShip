@@ -323,9 +323,9 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
 
     public void ClickStart()
     {
+        
         RoomPanel.SetActive(false);
-
-        PhotonNetwork.LoadLevel("round1");       
+        PhotonNetwork.LoadLevel("round5");       
     }
 
     // 강퇴확인 다이얼로그 No버튼을 눌렀을 때

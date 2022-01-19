@@ -13,6 +13,7 @@ public class Typingeffect : MonoBehaviour
     public PhotonView PV;
     public Image youdied;
     public Image someonedied;
+    public GameObject player;
 
     /*현재 로컬플레이어 캐릭터 오브젝트*/
     GameObject LocalPlayer = null;
@@ -121,8 +122,12 @@ public class Typingeffect : MonoBehaviour
     [PunRPC]
     void diefunc(int actnr)
     {
+        int num = player.transform.GetComponent<test>().get_player_index(actnr);
         if (actnr == PS.PV.OwnerActorNr)
+        {
+            R_NetWorkManager.player_die[num] += 1;
             youdied.gameObject.SetActive(true);
+        }
         else
             someonedied.gameObject.SetActive(true);
         PS.isDie = true;

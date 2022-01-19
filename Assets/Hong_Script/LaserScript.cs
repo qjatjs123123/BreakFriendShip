@@ -59,6 +59,7 @@ public class LaserScript : MonoBehaviourPun
             return;
         turnon = true;
         LocalPlayer = player.transform.GetComponent<round5_test>().character;
+        int num = player.transform.GetComponent<round5_test>().get_player_index(index);
         PS = LocalPlayer.transform.GetComponent<PlayerScript>();
         PS.isDie = true;
 
@@ -66,7 +67,7 @@ public class LaserScript : MonoBehaviourPun
         if (PS.PV.OwnerActorNr == index)
         {
             youdied.gameObject.SetActive(true);
-            R_NetWorkManager.player_die[index - 1] += 1;
+            R_NetWorkManager.player_die[num] += 1;
         }
 
         else

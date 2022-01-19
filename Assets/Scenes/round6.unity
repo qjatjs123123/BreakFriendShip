@@ -1043,6 +1043,7 @@ MonoBehaviour:
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 214396921}
+  player: {fileID: 2090222463}
   curscene: round6
   apple: {fileID: 114815117}
 --- !u!114 &214396921
@@ -1297,6 +1298,7 @@ MonoBehaviour:
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 262257635}
+  player: {fileID: 2090222463}
   curscene: round6
   apple: {fileID: 114815117}
 --- !u!114 &262257635
@@ -40009,6 +40011,7 @@ MonoBehaviour:
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 891429574}
+  player: {fileID: 2090222463}
   curscene: round6
   apple: {fileID: 114815117}
 --- !u!114 &891429574
@@ -40325,6 +40328,7 @@ MonoBehaviour:
   ghost: {fileID: 2054580551}
   wall1: {fileID: 22474933}
   wall2: {fileID: 13893944}
+  player: {fileID: 2090222463}
 --- !u!114 &996683551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44263,6 +44267,7 @@ MonoBehaviour:
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 2054580558}
+  player: {fileID: 2090222463}
   curscene: round6
   apple: {fileID: 114815117}
 --- !u!50 &2054580557
@@ -44350,6 +44355,7 @@ MonoBehaviour:
   outimg: {fileID: 1407986263}
   regameimg: {fileID: 1268490768}
   num: 6
+  arr: 00000000000000000000000000000000
 --- !u!4 &2090222465
 Transform:
   m_ObjectHideFlags: 0

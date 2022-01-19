@@ -34,6 +34,10 @@ public class TimerLimit : MonoBehaviourPunCallbacks
     void respawn()
     {
         GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round3>().init_round();
+        for(int i = 0; i< R_NetWorkManager.player_die.Length; i++)
+        {
+            R_NetWorkManager.player_die[i] += 1;
+        }
     }
 
     /*시간 동기화 맞추기 위해서*/

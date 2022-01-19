@@ -17,7 +17,7 @@ public class init_round6 : MonoBehaviour
     public GameObject ghost;
     public GameObject wall1;
     public GameObject wall2;
-
+    public GameObject player;
 
     public void init_round()
     {
@@ -25,7 +25,7 @@ public class init_round6 : MonoBehaviour
 
         for (int i = 0; i < players.Length; i++)
         {
-            int actnum = players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr - 1;
+            int actnum = player.transform.GetComponent<test>().get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
             players[i].transform.GetComponent<PlayerScript>().isDie = false;
             players[i].transform.position = new Vector3(tr[actnum].position.x, tr[actnum].position.y, tr[actnum].position.z);
             IsFruit[i].sprite = apple_silute;

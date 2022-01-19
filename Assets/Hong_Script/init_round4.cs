@@ -15,14 +15,14 @@ public class init_round4 : MonoBehaviour
     public GameObject apple;
     public GameObject Typingeffect;
     public GameObject apple_siluet_obj;
-
+    public GameObject player;
     public void init_round()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
         for (int i = 0; i < players.Length; i++)
         {
-            int actnum = players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr - 1;
+            int actnum = player.transform.GetComponent<test>().get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
             players[i].transform.GetComponent<PlayerScript>().isDie = false;
             players[i].transform.position = new Vector3(tr[actnum].position.x, tr[actnum].position.y, tr[actnum].position.z);
             IsFruit[i].sprite = apple_silute;

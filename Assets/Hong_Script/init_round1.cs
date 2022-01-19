@@ -14,6 +14,7 @@ public class init_round1 : MonoBehaviour
     public Transform applespawn;
     public GameObject apple;
     public GameObject apple_siluet_obj;
+    public GameObject player;
 
     public void init_round()
     {
@@ -21,7 +22,11 @@ public class init_round1 : MonoBehaviour
 
         for (int i = 0; i < players.Length; i++)
         {
-            int actnum = players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr - 1;
+            int actnum = 0;
+            if(R_NetWorkManager.round == 5)
+                actnum = player.transform.GetComponent<round5_test>().get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
+            else if(R_NetWorkManager.round == 1)
+                actnum = player.transform.GetComponent<test>().get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
             players[i].transform.GetComponent<PlayerScript>().isDie = false;
             players[i].transform.position = new Vector3(tr[actnum].position.x, tr[actnum].position.y, tr[actnum].position.z);
             IsFruit[i].sprite = apple_silute;

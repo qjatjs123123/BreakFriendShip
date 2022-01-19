@@ -57,13 +57,14 @@ public class V_LaserScript : MonoBehaviourPun
         turnon = true;
         LocalPlayer = player.transform.GetComponent<round5_test>().character;
         PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+        int num = player.transform.GetComponent<round5_test>().get_player_index(index);
         PS.isDie = true;
 
 
         if (PS.PV.OwnerActorNr == index)
         {
             youdied.gameObject.SetActive(true);
-            R_NetWorkManager.player_die[index - 1] += 1;
+            R_NetWorkManager.player_die[num] += 1;
         }
 
         else

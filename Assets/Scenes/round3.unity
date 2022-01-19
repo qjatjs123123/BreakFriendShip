@@ -69173,6 +69173,7 @@ MonoBehaviour:
   youdied: {fileID: 732736805}
   someonedied: {fileID: 848104790}
   PV: {fileID: 978654497}
+  player: {fileID: 1964321278}
   curscene: round3
   apple: {fileID: 100200878}
 --- !u!61 &978654496
@@ -70068,6 +70069,7 @@ MonoBehaviour:
   - {fileID: 836378233}
   apple_silute: {fileID: 21300000, guid: 016fbaac7b70faf468b277d7158dbbbe, type: 3}
   apple_siluet_obj: {fileID: 2035241225}
+  player: {fileID: 1964321278}
 --- !u!4 &1115572794
 Transform:
   m_ObjectHideFlags: 0
@@ -73731,6 +73733,7 @@ MonoBehaviour:
   outimg: {fileID: 107164146}
   regameimg: {fileID: 2140807459}
   num: 3
+  arr: 00000000000000000000000000000000
 --- !u!4 &1964321280
 Transform:
   m_ObjectHideFlags: 0

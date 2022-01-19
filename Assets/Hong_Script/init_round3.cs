@@ -18,6 +18,7 @@ public class init_round3 : MonoBehaviourPun
     public Image[] IsFruit;
     public Sprite apple_silute;
     public GameObject apple_siluet_obj;
+    public GameObject player;
     // Start is called before the first frame update
 
     public void init_round()
@@ -26,7 +27,7 @@ public class init_round3 : MonoBehaviourPun
 
         for(int i = 0; i < players.Length; i++)
         {
-            int actnum = players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr-1;
+            int actnum = player.transform.GetComponent<test>().get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
             players[i].transform.GetComponent<PlayerScript>().isDie = false;
             players[i].transform.position = new Vector3(tr[actnum].position.x, tr[actnum].position.y, tr[actnum].position.z);
             IsFruit[i].sprite = apple_silute;

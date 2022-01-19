@@ -2055,6 +2055,7 @@ MonoBehaviour:
   outimg: {fileID: 1026538786}
   regameimg: {fileID: 399090975}
   num: 4
+  arr: 00000000000000000000000000000000
 --- !u!4 &437612426
 Transform:
   m_ObjectHideFlags: 0
@@ -2305,6 +2306,7 @@ MonoBehaviour:
   PV: {fileID: 504865715}
   youdied: {fileID: 1060441740}
   someonedied: {fileID: 1198194713}
+  player: {fileID: 437612424}
   curscene: round4
 --- !u!114 &504865715
 MonoBehaviour:
@@ -3072,6 +3074,7 @@ MonoBehaviour:
   apple: {fileID: 1325579459}
   Typingeffect: {fileID: 504865710}
   apple_siluet_obj: {fileID: 1303346245}
+  player: {fileID: 437612424}
 --- !u!114 &710825260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3901,6 +3904,7 @@ MonoBehaviour:
   youdied: {fileID: 1060441740}
   someonedied: {fileID: 1198194713}
   PV: {fileID: 977312730}
+  player: {fileID: 437612424}
   curscene: round3
   apple: {fileID: 1325579459}
 --- !u!61 &977312728

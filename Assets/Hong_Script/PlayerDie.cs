@@ -12,7 +12,7 @@ public class PlayerDie : MonoBehaviourPun
     public Image youdied;
     public Image someonedied;
     public PhotonView PV;
-    
+    public GameObject player;
 
     public string curscene;
     bool turnon = false;
@@ -91,13 +91,14 @@ public class PlayerDie : MonoBehaviourPun
         /*로컬 캐릭터 isDle함으로써 못움직이게 하기*/
         LocalPlayer = LocalPlayerObject();
         PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+        int num = player.transform.GetComponent<test>().get_player_index(index);
         PS.isDie = true;
 
         /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/     
         if (index == PS.PV.OwnerActorNr)
         {
             youdied.gameObject.SetActive(true);
-            R_NetWorkManager.player_die[index - 1] += 1;
+            R_NetWorkManager.player_die[num] += 1;
         }
 
 

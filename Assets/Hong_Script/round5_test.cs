@@ -23,6 +23,8 @@ public class round5_test : MonoBehaviourPunCallbacks
     GameObject defense;
     int player_index;
     bool turnon = false;
+    public int[] arr = { 0, 0, 0, 0 };
+
     // Start is called before the first frame update
     void Start()
     {
@@ -75,27 +77,26 @@ public class round5_test : MonoBehaviourPunCallbacks
         for (int i = 0; i < players.Length; i++)
         {
             Debug.Log(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr);
-            if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr == 1)
+            if (get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr) == 0)
             {
                 
                 leftdefense.transform.parent = players[i].transform;
                 leftdefense.transform.localPosition = new Vector2(-0.5f, 0);
             }
-            else if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr == 2)
+            else if (get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr) == 1)
             {
                
                 updefense1.transform.parent = players[i].transform;
                 updefense1.transform.localPosition = new Vector2(0, 0.5f);
             }
-            else if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr == 3)
+            else if (get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr) == 2)
             {
                 
                 updefense2.transform.parent = players[i].transform;
                 updefense2.transform.localPosition = new Vector2(0, 0.5f);
             }
-            else if (players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr ==4)
-            {
-                
+            else if (get_player_index(players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr) == 3)
+            {               
                 rightdefense.transform.parent = players[i].transform;
                 rightdefense.transform.localPosition = new Vector2(0.5f, 0);
             }
@@ -103,6 +104,42 @@ public class round5_test : MonoBehaviourPunCallbacks
 
 
     }
+
+    public int get_player_index(int num)
+    {
+        int i = 0;
+        for (i = 0; i < 4; i++)
+        {
+            if (arr[i] == num)
+                break;
+        }
+        return i;
+    }
+
+    void players_sort()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            arr[i] = players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+        }
+
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            for (int j = i + 1; j < arr.Length; j++)
+            { //j:비교하는 숫자, i번째의 오른쪽=>i+1
+                if (arr[i] > arr[j])
+                {
+                    int tmp = arr[i];  //변수값 서로 바꿀때는 tmp에 미리 값 1개 옮겨놓기!
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+
+    }
+
     public void restart()
     {
         PhotonNetwork.LoadLevel("LoadingScene");
@@ -115,6 +152,7 @@ public class round5_test : MonoBehaviourPunCallbacks
 
         if (players.Length == 4 && !turnon)
         {
+            players_sort();
             DefenseSpawn();
             turnon = true;
         }

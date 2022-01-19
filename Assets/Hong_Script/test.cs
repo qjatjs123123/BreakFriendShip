@@ -12,7 +12,8 @@ public class test : MonoBehaviourPunCallbacks
     public Image outimg;
     public Image regameimg;
     public int num;
-
+    bool turnon = false;
+    public int[] arr = { 0, 0, 0, 0 };
     // Start is called before the first frame update
     void Start()
     {     
@@ -55,9 +56,51 @@ public class test : MonoBehaviourPunCallbacks
             PhotonNetwork.Instantiate("VitualGuy", SelectSpwanPosition().position, SelectSpwanPosition().rotation);
     }
 
+    public int get_player_index(int num)
+    {
+        int i = 0;
+        for (i = 0; i < 4; i++)
+        {
+            if (arr[i] == num)
+                break;
+        }
+        return i;
+    }
+
+    void players_sort()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            arr[i] = players[i].transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+        }
+
+        for (int i = 0; i < arr.Length - 1; i++)
+        {
+            for (int j = i + 1; j < arr.Length; j++)
+            { //j:비교하는 숫자, i번째의 오른쪽=>i+1
+                if (arr[i] > arr[j])
+                {
+                    int tmp = arr[i];  //변수값 서로 바꿀때는 tmp에 미리 값 1개 옮겨놓기!
+                    arr[i] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+
+    }
+
     // Update is called once per frame
     void Update()
     {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        if (players.Length == 4 && !turnon)
+        {
+            players_sort();
+            turnon = true;
+        }
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsMasterClient)
             regameimg.gameObject.SetActive(true);
     }
