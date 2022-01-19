@@ -1039,7 +1039,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adfac1a1d7ee6ed4d8913ddda61e6fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: []
+  SpawnPosition:
+  - {fileID: 1263708954}
+  - {fileID: 339269498}
+  - {fileID: 603721256}
+  - {fileID: 175254077}
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 214396921}
@@ -1294,7 +1298,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adfac1a1d7ee6ed4d8913ddda61e6fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: []
+  SpawnPosition:
+  - {fileID: 1263708954}
+  - {fileID: 339269498}
+  - {fileID: 603721256}
+  - {fileID: 175254077}
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 262257635}
@@ -40007,7 +40015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adfac1a1d7ee6ed4d8913ddda61e6fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition: []
+  SpawnPosition:
+  - {fileID: 1263708954}
+  - {fileID: 339269498}
+  - {fileID: 603721256}
+  - {fileID: 175254077}
   youdied: {fileID: 403826791}
   someonedied: {fileID: 1139301700}
   PV: {fileID: 891429574}

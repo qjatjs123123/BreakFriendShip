@@ -3,13 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class ElevatorScript : MonoBehaviourPun
 {
-    bool[] players_Ison = { false, false, false, false };
+    public bool[] players_Ison = { false, false, false, false };
     public Transform target;
-    bool turnon = false;
+    public bool turnon = false;
     public PhotonView PV;
+    public GameObject player;
+    public Image youdied;
+    public Image someonedied;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +25,10 @@ public class ElevatorScript : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if(turnon)
+        if (turnon)
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 3 * Time.deltaTime);
+            
+
     }
 
     [PunRPC]
@@ -41,20 +49,25 @@ public class ElevatorScript : MonoBehaviourPun
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        
-        int actnum = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
-        players_Ison[actnum-1] = true;
+        if (youdied.gameObject.activeSelf == true || someonedied.gameObject.activeSelf == true)
+            return;
+
+        int index = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+        int actnum = player.transform.GetComponent<round5_test>().get_player_index(index);
+        players_Ison[actnum] = true;
         collision.transform.SetParent(transform, true);
 
-        if (AllOnElevator())
+        if (AllOnElevator() && !collision.transform.GetComponent<PlayerScript>().isDie)
             PV.RPC("moveElevator", RpcTarget.AllViaServer);
 
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        int actnum = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+        int index = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
+        int actnum = player.transform.GetComponent<round5_test>().get_player_index(index);
         collision.transform.SetParent(null, true);
-        players_Ison[actnum-1] = false;
+        players_Ison[actnum] = false;
+        turnon = false;
     }
 
 

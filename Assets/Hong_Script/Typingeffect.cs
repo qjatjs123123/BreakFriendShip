@@ -123,9 +123,10 @@ public class Typingeffect : MonoBehaviour
     void diefunc(int actnr)
     {
         int num = player.transform.GetComponent<test>().get_player_index(actnr);
+        R_NetWorkManager.player_die[num] += 1;
         if (actnr == PS.PV.OwnerActorNr)
         {
-            R_NetWorkManager.player_die[num] += 1;
+            
             youdied.gameObject.SetActive(true);
         }
         else

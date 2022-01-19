@@ -40,6 +40,7 @@ public class PlayerDie : MonoBehaviourPun
     }
 
     /*라운드에 맞는 초기화함수 호출*/
+    [PunRPC]
     void respawn()
     {
         if (R_NetWorkManager.round == 1 || R_NetWorkManager.round == 5)
@@ -93,12 +94,11 @@ public class PlayerDie : MonoBehaviourPun
         PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
         int num = player.transform.GetComponent<test>().get_player_index(index);
         PS.isDie = true;
-
-        /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/     
+        R_NetWorkManager.player_die[num] += 1;
+        /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/
         if (index == PS.PV.OwnerActorNr)
         {
-            youdied.gameObject.SetActive(true);
-            R_NetWorkManager.player_die[num] += 1;
+            youdied.gameObject.SetActive(true);        
         }
 
 

@@ -41,9 +41,11 @@ public class LaserScript : MonoBehaviourPun
     [PunRPC]
     void respawn()
     {
-        Elevator.transform.position = new Vector3(Elevator_Spawn.position.x, Elevator_Spawn.position.y, Elevator_Spawn.position.z);
+        for (int i = 0; i < 4; i++)
+            Elevator.transform.GetComponent<ElevatorScript>().players_Ison[i] = false;
         GameObject.FindGameObjectWithTag("init").transform.GetComponent<init_round1>().init_round();
-        Invoke("notDemage", 0.5f);
+        Elevator.transform.position = new Vector3(Elevator_Spawn.position.x, Elevator_Spawn.position.y, Elevator_Spawn.position.z);
+        Invoke("notDemage", 1.5f);
     }
 
     void Awake()
@@ -61,13 +63,13 @@ public class LaserScript : MonoBehaviourPun
         LocalPlayer = player.transform.GetComponent<round5_test>().character;
         int num = player.transform.GetComponent<round5_test>().get_player_index(index);
         PS = LocalPlayer.transform.GetComponent<PlayerScript>();
+        Elevator.transform.GetComponent<ElevatorScript>().turnon = false;
         PS.isDie = true;
-
+        R_NetWorkManager.player_die[num] += 1;
 
         if (PS.PV.OwnerActorNr == index)
         {
             youdied.gameObject.SetActive(true);
-            R_NetWorkManager.player_die[num] += 1;
         }
 
         else

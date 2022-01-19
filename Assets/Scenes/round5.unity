@@ -356,7 +356,7 @@ MonoBehaviour:
   youdied: {fileID: 995633561}
   someonedied: {fileID: 1034598602}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   PV: {fileID: 73503504}
   hits: 0
   curscene: round5
@@ -673,7 +673,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &215174444
 GameObject:
@@ -913,7 +913,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &279233456
 GameObject:
@@ -943,7 +943,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &336696169
 GameObject:
@@ -1107,7 +1107,7 @@ MonoBehaviour:
   youdied: {fileID: 995633561}
   someonedied: {fileID: 1034598602}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   PV: {fileID: 430041330}
   hits: 0
   curscene: round5
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   youdied: {fileID: 995633561}
   someonedied: {fileID: 1034598602}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   PV: {fileID: 544128862}
   hits: 0
   curscene: round5
@@ -1972,7 +1972,7 @@ Transform:
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &684200620
 GameObject:
@@ -2663,7 +2663,7 @@ Transform:
   m_LocalScale: {x: 1.25, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &798296977
 GameObject:
@@ -2790,7 +2790,7 @@ MonoBehaviour:
   youdied: {fileID: 995633561}
   someonedied: {fileID: 1034598602}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   PV: {fileID: 869075762}
   hits: 0
   curscene: round5
@@ -3163,7 +3163,7 @@ MonoBehaviour:
   someonedied: {fileID: 1034598602}
   PV: {fileID: 950275083}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   hits: 0
   curscene: round5
 --- !u!120 &950275081
@@ -3272,11 +3272,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 950275079}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -75.88, y: -8.81, z: 0}
+  m_LocalPosition: {x: -75.88, y: -8.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &950275083
 MonoBehaviour:
@@ -3581,7 +3581,7 @@ Transform:
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!1 &972354828
 GameObject:
@@ -3934,7 +3934,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 24
+  m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034598601
 GameObject:
@@ -4336,7 +4336,7 @@ MonoBehaviour:
   youdied: {fileID: 995633561}
   someonedied: {fileID: 1034598602}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   PV: {fileID: 1167587552}
   hits: 0
   curscene: round5
@@ -44001,7 +44001,7 @@ Transform:
   m_LocalScale: {x: 1.25, y: 0.75, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1649938786
 GameObject:
@@ -44169,8 +44169,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89a8b3e421d88d4498f19592aa7207cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  players_Ison: 00000000
   target: {fileID: 138394278}
+  turnon: 0
   PV: {fileID: 1649938793}
+  player: {fileID: 1322915440}
+  youdied: {fileID: 995633561}
+  someonedied: {fileID: 1034598602}
 --- !u!114 &1649938793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -45123,7 +45128,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1917366837
 GameObject:
@@ -45386,7 +45391,7 @@ MonoBehaviour:
   youdied: {fileID: 995633561}
   someonedied: {fileID: 1034598602}
   Elevator: {fileID: 1649938786}
-  Elevator_Spawn: {fileID: 138394278}
+  Elevator_Spawn: {fileID: 167594291}
   PV: {fileID: 2005493883}
   hits: 0
   curscene: round5
