@@ -93,6 +93,7 @@ public class PlayerDie : MonoBehaviourPun
         LocalPlayer = LocalPlayerObject();
         PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
         int num = player.transform.GetComponent<test>().get_player_index(index);
+        Debug.Log(num);
         PS.isDie = true;
         R_NetWorkManager.player_die[num] += 1;
         /*전역변수 플레이어 액터넘버에 맞는 죽은 횟수 더하기*/
@@ -121,6 +122,8 @@ public class PlayerDie : MonoBehaviourPun
     //DieArea 진입시
     void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.tag != "Player")
+            return;
         LocalPlayer = LocalPlayerObject();
         PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
         PhotonView collision_pv = collision.transform.GetComponent<PlayerScript>().PV;
