@@ -36,22 +36,22 @@
 ![디자인2](https://user-images.githubusercontent.com/74814641/150348781-90732cd8-14d1-48d6-812f-b0db1f88ae92.JPG)
 
 ### 2. 강퇴기능 추가
-![강퇴](https://user-images.githubusercontent.com/74814641/150349062-7e40c95f-be31-4e3d-8799-a9457d65c3fe.JPG)
+![강퇴](https://user-images.githubusercontent.com/74814641/150349062-7e40c95f-be31-4e3d-8799-a9457d65c3fe.JPG)             
 방장 플레이어만 x버튼, 왕관버튼이 보이며 캐릭터 오른쪽 상단에 위치한 x버튼을 누를시 해당 플레이어는 강퇴된다.
 
 
 ### 3. 방장주기기능 추가
-![방장](https://user-images.githubusercontent.com/74814641/150349121-23331a82-89ed-4cdd-a8ec-542878f559bf.JPG) 
+![방장](https://user-images.githubusercontent.com/74814641/150349121-23331a82-89ed-4cdd-a8ec-542878f559bf.JPG)                 
 방장 플레이어만 x버튼, 왕관버튼이 보이며 캐릭터 오른쪽 상단에 위치한 왕관버튼을 누를시 해당 플레이어는 방장이 된다.
 
 
 ### 4. 각 라운드별 힌트박스 추가
-![힌트박스](https://user-images.githubusercontent.com/74814641/150349208-48df0476-b987-45f7-8170-4d462590f37c.JPG)     
+![힌트박스](https://user-images.githubusercontent.com/74814641/150349208-48df0476-b987-45f7-8170-4d462590f37c.JPG)                   
 느낌표버튼을 누르게 되면 힌트가 적힌 텍스트창이 보이게 된다.
 
 
 ### 5. 네트워크 상태표시 화면 추가
-![네트워크상태](https://user-images.githubusercontent.com/74814641/150354331-06139e0a-0e1a-4b53-aa89-ee8e0243bd26.png) 
+![네트워크상태](https://user-images.githubusercontent.com/74814641/150354331-06139e0a-0e1a-4b53-aa89-ee8e0243bd26.png)                           
 게임 플레이어들이 현재 네트워크 진행 상황을 알 수 있도록 네트워크 상태표시 화면 추가하였다.
 
 
