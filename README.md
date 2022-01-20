@@ -69,7 +69,7 @@
 닉네임을 입력하지 않고 버튼을 누르면 흔들리는 애니메이션 효과가 연출된다.
 
 + 캐릭터 선택 화면
-![캐릭터 선택](https://user-images.githubusercontent.com/74814641/150353417-e4880e48-7a0b-45a5-9bfc-f27b34699b19.gif)
+![캐릭터 선택](https://user-images.githubusercontent.com/74814641/150353417-e4880e48-7a0b-45a5-9bfc-f27b34699b19.gif)                           
 4가지 캐릭터를 선택할 수 있다.
 
 + 로비 화면
