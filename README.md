@@ -82,21 +82,28 @@
 
 + Round1 화면
 ![라운드1_1](https://user-images.githubusercontent.com/74814641/150357215-7b6897a6-6b7a-4964-94e6-32b4f5e788de.gif)
+튜토리얼이다.
 
 + Round2 화면
 ![라운드2](https://user-images.githubusercontent.com/74814641/150357736-bd4b0848-236a-4e29-812e-496d7ba339ae.gif)
+단체로 총알을 맞지 않고 박스를 뿌셔 사과를 먹으면 된다.
 
 + Round3 화면
 ![라운드3](https://user-images.githubusercontent.com/74814641/150359895-4154daf4-b16e-42fd-92a7-192d59d9baa4.gif)
+주어진 시간안에 3가지 장소에 랜덤으로 생성되는 사과를 먹으면 된다.
 
 + Round4 화면
 ![라운드4](https://user-images.githubusercontent.com/74814641/150359569-2286349a-95db-4cbd-972d-2b2b2313c85f.gif)
+무궁화 꽃이 피었습니다.가 되면 움직이면 죽게 된다.
 
 + Round5 화면
 ![라운드5](https://user-images.githubusercontent.com/74814641/150360509-48f4bb04-8bea-48b8-b71f-c3a6fff9cf20.gif)
+레이저를 맞지 않고 클리어 해야한다.
 
 + Round6 화면
 ![라운드6](https://user-images.githubusercontent.com/74814641/150360941-6cf8413d-34f0-4d67-8748-d3b5ff2b61f8.gif)
+모든 플레이어가 앞을 보고 있으면 유령이 가장 짧은 거리에 있는 플레이어를 향해 간다. 한명이라도 뒤쪽을 보고있으면 멈춘다.
+
 
 + 클리어 화면
 ![클리어 씬](https://user-images.githubusercontent.com/74814641/150361426-d5b18bd8-0438-4c6e-8507-817b146b7652.JPG)
