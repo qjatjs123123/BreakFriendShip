@@ -39096,10 +39096,9 @@ GameObject:
   - component: {fileID: 701527702}
   - component: {fileID: 701527701}
   - component: {fileID: 701527700}
-  - component: {fileID: 701527699}
-  - component: {fileID: 701527698}
   - component: {fileID: 701527697}
   - component: {fileID: 701527696}
+  - component: {fileID: 701527698}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: ghost
@@ -39159,36 +39158,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 701527695}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adfac1a1d7ee6ed4d8913ddda61e6fa0, type: 3}
+  m_Script: {fileID: 11500000, guid: fe207686a949f5f4da4e7dfe170b8397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SpawnPosition:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  youdied: {fileID: 0}
-  someonedied: {fileID: 0}
-  PV: {fileID: 701527696}
-  player: {fileID: 0}
-  curscene: round6
-  apple: {fileID: 1953868388}
---- !u!114 &701527699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 701527695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69b2d88df963be843acf8bc966905f7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FoundObjects: []
-  shortDis: 0
-  ghost: {fileID: 701527695}
-  speed: 0.05
 --- !u!61 &701527700
 BoxCollider2D:
   m_ObjectHideFlags: 0

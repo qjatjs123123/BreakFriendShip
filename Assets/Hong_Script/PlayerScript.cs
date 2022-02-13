@@ -18,6 +18,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
     public bool isGround;
     public bool isRun;
+    public bool isUnder = false;
     public bool isDie = false;
     public bool IsRound2_Trigger = false;
     public bool IsRound2_Trigger2 = false;
@@ -28,6 +29,11 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public AudioSource mysfx;
     public AudioClip jumpsfx;
     int round;
+
+    //Stream 받아올 임시변수
+    bool get_isRun;
+    bool get_isGround;
+    bool get_isUnder;
 
     void Awake()
     {
@@ -50,7 +56,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     void Update()
     {
         /*캐릭터 사망여부 동기화*/
-        
+
         /*캐릭터 포지션 동기화*/
         if (PV.IsMine)
         {
@@ -84,23 +90,39 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
             // 점프, 바닥체크
             isGround = Physics2D.OverlapCircle((Vector2)transform.position + new Vector2(0, -0.5f), 0.07f, 1 << LayerMask.NameToLayer("Ground"));
+
             AN.SetBool("isJump", !isGround);
 
 
             if (Input.GetKeyDown(KeyCode.Space) && isGround && !isDie)
             {
-                
-                PV.RPC("JumpRPC", RpcTarget.All);              
+
+                PV.RPC("JumpRPC", RpcTarget.All);
                 JumpSound();
-                
+
             }
-            
+
+            if(round == 7)
+            {
+                if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+                    isUnder = true;
+                if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.W))
+                    isUnder = false;
+
+            }
+
 
         }
 
         //IsMine이 아닌 것들은 부드럽게 위치 동기화
         else if ((transform.position - curPos).sqrMagnitude >= 100) transform.position = curPos;
-        else transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime*10);
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, curPos, Time.deltaTime * 10);
+            isGround = get_isGround;
+            isRun = get_isRun;
+            isUnder = get_isUnder;
+        }
     }
 
 
@@ -114,7 +136,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     void JumpRPC()
     {
         RB.velocity = Vector2.zero;
-        RB.AddForce(Vector2.up * 700);
+        RB.AddForce(Vector2.up * 700);    
     }
 
 
@@ -123,12 +145,25 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         if (stream.IsWriting)
         {
             stream.SendNext(transform.position);
+
+            if (round == 7)
+            {
+                stream.SendNext(isRun);
+                stream.SendNext(isGround);
+                stream.SendNext(isUnder);
+            }
             
         }
         else
         {
             curPos = (Vector3)stream.ReceiveNext();
-            
+
+            if (round == 7)
+            {
+                get_isRun = (bool)stream.ReceiveNext();
+                get_isGround = (bool)stream.ReceiveNext();
+                get_isUnder = (bool)stream.ReceiveNext();
+            }
         }
     }
 
