@@ -27,19 +27,19 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     float axis;
     public AudioSource mysfx;
     public AudioClip jumpsfx;
-
+    int round;
 
     void Awake()
     {
 
         // 닉네임 표시
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
-
+        round = R_NetWorkManager.round;
 
         //자기 플레이어를 따라다니는 카메라 설정
         //CM은 시네머신 카메라 변수
-        //에러남 보류
-        if (PV.IsMine)
+        //에러남 보류 라운드 7일때 제외
+        if (PV.IsMine && round != 7)
         {
             var CM = GameObject.Find("CM vcam1").GetComponent<CinemachineVirtualCamera>();
             CM.Follow = transform;

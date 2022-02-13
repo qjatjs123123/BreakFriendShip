@@ -325,7 +325,8 @@ public class R_NetWorkManager : MonoBehaviourPunCallbacks
     {
         
         RoomPanel.SetActive(false);
-        PhotonNetwork.LoadLevel("round1");       
+        //PhotonNetwork.LoadLevel("round1");
+        PhotonNetwork.LoadLevel("round7"); // 라운드 테스트용
     }
 
     // 강퇴확인 다이얼로그 No버튼을 눌렀을 때

@@ -14,10 +14,13 @@ public class test : MonoBehaviourPunCallbacks
     public int num;
     bool turnon = false;
     public int[] arr = { 0, 0, 0, 0 };
+
+    
     // Start is called before the first frame update
     void Start()
     {     
         Spawn();
+        
         
     }
     void Awake()
@@ -28,6 +31,7 @@ public class test : MonoBehaviourPunCallbacks
         Screen.SetResolution(960, 540, false);
         PhotonNetwork.SendRate = 60;
         PhotonNetwork.SerializationRate = 30;
+        
     }
 
     /*지금 현재 플레이어가 몇번째 플레이언지 확인*/
