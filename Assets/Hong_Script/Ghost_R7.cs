@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class Ghost_R7 : MonoBehaviour
+public class Ghost_R7 : MonoBehaviourPunCallbacks
 {
 
     GameObject[] players;
-
+    public PhotonView PV;
     
     // Start is called before the first frame update
     void Start()
@@ -18,31 +20,48 @@ public class Ghost_R7 : MonoBehaviour
     private void FixedUpdate()
     {
          players = GameObject.FindGameObjectsWithTag("Player");
-        if (players.Length != 4)
-            return;
+        //if (players.Length != 2)
+        //    return;
 
-        if (IsAllRun() && IsAllLeft())
+        if (IsAllRun() && IsAllLeft())           
+            PV.RPC("Ghost_Move", RpcTarget.All, 1);
+        
+
+        else if (IsAllRun() && IsAllRight())
+            PV.RPC("Ghost_Move", RpcTarget.All, 2);
+
+
+        else if (IsAllJump())
+            PV.RPC("Ghost_Move", RpcTarget.All, 3);
+
+        else if (IsAllUnder())
+            PV.RPC("Ghost_Move", RpcTarget.All, 4);
+    }
+
+    [PunRPC]
+    void Ghost_Move(int index)
+    {
+        if (index == 1)
         {
             transform.Translate(Vector3.left * 3f * Time.deltaTime);
             transform.GetComponent<SpriteRenderer>().flipX = true;
         }
 
-        else if (IsAllRun() && IsAllRight())
+        else if(index == 2)
         {
             transform.Translate(Vector3.right * 3f * Time.deltaTime);
             transform.GetComponent<SpriteRenderer>().flipX = false;
         }
-        else if (IsAllJump())
+        else if(index == 3)
             transform.Translate(Vector3.up * 3f * Time.deltaTime);
-        else if (IsAllUnder())
+        else
             transform.Translate(Vector3.down * 3f * Time.deltaTime);
     }
-
     
 
     public bool IsAllRun()
     {
-        if (players.Length == 4)
+        if (players.Length == 1)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -57,7 +76,7 @@ public class Ghost_R7 : MonoBehaviour
 
     public bool IsAllLeft()
     {      
-        if (players.Length == 4)
+        if (players.Length == 1)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -72,7 +91,7 @@ public class Ghost_R7 : MonoBehaviour
 
     public bool IsAllRight()
     {
-        if (players.Length == 4)
+        if (players.Length == 1)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -87,7 +106,7 @@ public class Ghost_R7 : MonoBehaviour
 
     public bool IsAllJump()
     {
-        if (players.Length == 4)
+        if (players.Length == 1)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -102,7 +121,7 @@ public class Ghost_R7 : MonoBehaviour
 
     public bool IsAllUnder()
     {
-        if (players.Length == 4)
+        if (players.Length == 1)
         {
             for (int i = 0; i < players.Length; i++)
             {

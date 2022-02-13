@@ -413,6 +413,7 @@ MonoBehaviour:
   NickNameText: {fileID: 4164794408173477252}
   isGround: 0
   isRun: 0
+  isUnder: 0
   isDie: 0
   IsRound2_Trigger: 0
   IsRound2_Trigger2: 0

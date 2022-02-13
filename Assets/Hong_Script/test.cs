@@ -100,7 +100,7 @@ public class test : MonoBehaviourPunCallbacks
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        if (players.Length == 4 && !turnon)
+        if (players.Length == 1 && !turnon) // Å×½ºÆ®
         {
             players_sort();
             turnon = true;
