@@ -24,6 +24,7 @@ TagManager:
   - main
   - lobby
   - init
+  - RoundManager
   layers:
   - Default
   - TransparentFX

@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.UI;
 
 public class Ghost_R7 : MonoBehaviourPunCallbacks
 {
 
     GameObject[] players;
     public PhotonView PV;
+    public RedBlue redblue;
+    public Transform GhostSpawn;
+
+    bool IsBlue;
     
     // Start is called before the first frame update
     void Start()
@@ -20,22 +25,55 @@ public class Ghost_R7 : MonoBehaviourPunCallbacks
     private void FixedUpdate()
     {
          players = GameObject.FindGameObjectsWithTag("Player");
-        //if (players.Length != 2)
-        //    return;
-
-        if (IsAllRun() && IsAllLeft())           
-            PV.RPC("Ghost_Move", RpcTarget.All, 1);
-        
-
-        else if (IsAllRun() && IsAllRight())
-            PV.RPC("Ghost_Move", RpcTarget.All, 2);
+        if (players.Length != 2)
+            return;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            IsBlue = redblue.IsBlue;
+            if (IsAllRun() && IsAllLeft())
+                CheckIsBlue(1);
 
 
-        else if (IsAllJump())
-            PV.RPC("Ghost_Move", RpcTarget.All, 3);
+            else if (IsAllRun() && IsAllRight())
+                CheckIsBlue(2);
 
-        else if (IsAllUnder())
-            PV.RPC("Ghost_Move", RpcTarget.All, 4);
+
+            else if (IsAllJump())
+                CheckIsBlue(3);
+
+            else if (IsAllUnder())
+                CheckIsBlue(4);
+            else
+                CheckPlayerMove();
+        }
+    }
+    void CheckPlayerMove()
+    {
+        if (!IsBlue)
+        {
+            for (int i = 0; i < players.Length; i++) {
+                bool isRun = players[i].transform.GetComponent<PlayerScript>().isRun;
+                bool isJump = !players[i].transform.GetComponent<PlayerScript>().isGround;
+                if (isRun || isJump)
+                {
+                    PV.RPC("MoveGhost", RpcTarget.AllViaServer);
+                }
+            }
+        }
+    }
+
+    void CheckIsBlue(int i)
+    {
+        if (!IsBlue)
+            PV.RPC("MoveGhost", RpcTarget.AllViaServer);
+        else
+            PV.RPC("Ghost_Move", RpcTarget.All, i);
+    }
+
+    [PunRPC]
+    void MoveGhost()
+    {
+        transform.position = new Vector3(GhostSpawn.position.x, GhostSpawn.position.y, GhostSpawn.position.z);
     }
 
     [PunRPC]
@@ -61,7 +99,7 @@ public class Ghost_R7 : MonoBehaviourPunCallbacks
 
     public bool IsAllRun()
     {
-        if (players.Length == 1)
+        if (players.Length == 2)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -76,7 +114,7 @@ public class Ghost_R7 : MonoBehaviourPunCallbacks
 
     public bool IsAllLeft()
     {      
-        if (players.Length == 1)
+        if (players.Length == 2)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -91,7 +129,7 @@ public class Ghost_R7 : MonoBehaviourPunCallbacks
 
     public bool IsAllRight()
     {
-        if (players.Length == 1)
+        if (players.Length == 2)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -106,7 +144,7 @@ public class Ghost_R7 : MonoBehaviourPunCallbacks
 
     public bool IsAllJump()
     {
-        if (players.Length == 1)
+        if (players.Length == 2)
         {
             for (int i = 0; i < players.Length; i++)
             {
@@ -121,7 +159,7 @@ public class Ghost_R7 : MonoBehaviourPunCallbacks
 
     public bool IsAllUnder()
     {
-        if (players.Length == 1)
+        if (players.Length == 2)
         {
             for (int i = 0; i < players.Length; i++)
             {

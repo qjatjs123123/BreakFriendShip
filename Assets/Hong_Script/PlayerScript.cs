@@ -22,6 +22,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public bool isDie = false;
     public bool IsRound2_Trigger = false;
     public bool IsRound2_Trigger2 = false;
+    public bool isReady = false;
 
     Vector3 curPos;
     bool stream_isDie;
@@ -29,11 +30,13 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
     public AudioSource mysfx;
     public AudioClip jumpsfx;
     int round;
+    test test;
 
     //Stream 받아올 임시변수
     bool get_isRun;
     bool get_isGround;
     bool get_isUnder;
+    bool get_isReady;
 
     void Awake()
     {
@@ -41,6 +44,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
         // 닉네임 표시
         NickNameText.text = PV.IsMine ? PhotonNetwork.NickName : PV.Owner.NickName;
         round = R_NetWorkManager.round;
+        test = GameObject.FindGameObjectWithTag("RoundManager").transform.GetComponent<test>();
 
         //자기 플레이어를 따라다니는 카메라 설정
         //CM은 시네머신 카메라 변수
@@ -104,6 +108,10 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
 
             if(round == 7)
             {
+                
+                if (!isReady)
+                    isReady = test.IsReady;
+                Debug.Log(test.IsReady);
                 if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
                     isUnder = true;
                 if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
@@ -122,6 +130,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
             isGround = get_isGround;
             isRun = get_isRun;
             isUnder = get_isUnder;
+            isReady = get_isReady;
         }
     }
 
@@ -151,6 +160,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
                 stream.SendNext(isRun);
                 stream.SendNext(isGround);
                 stream.SendNext(isUnder);
+                stream.SendNext(isReady);
             }
             
         }
@@ -163,6 +173,7 @@ public class PlayerScript : MonoBehaviourPunCallbacks, IPunObservable
                 get_isRun = (bool)stream.ReceiveNext();
                 get_isGround = (bool)stream.ReceiveNext();
                 get_isUnder = (bool)stream.ReceiveNext();
+                get_isReady = (bool)stream.ReceiveNext();
             }
         }
     }

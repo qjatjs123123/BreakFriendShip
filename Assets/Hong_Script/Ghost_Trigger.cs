@@ -6,12 +6,18 @@ using Photon.Realtime;
 
 public class Ghost_Trigger : MonoBehaviour
 {
-    public GameObject target;
+    [SerializeField]
     public GameObject wall;
+
+    public GameObject[] FireTrap;
     public GameObject[] saw;
     public PhotonView PV;
     Vector3 pos; //현재위치
-
+    int round;
+    void start()
+    {
+        
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.tag);
@@ -19,11 +25,17 @@ public class Ghost_Trigger : MonoBehaviour
         {
             Debug.Log("실행");
             //wall.transform.position = Vector3.MoveTowards(wall.transform.position, target.transform.position, 10 * Time.deltaTime);
-            wall.SetActive(false);
+            if(round == 6)
+                wall.SetActive(false);
+            
+
+
             PV.RPC("Synturnon", RpcTarget.AllViaServer);
         }
     }
-    
+
+
+
     [PunRPC]
     void Synturnon()
     {

@@ -64,6 +64,12 @@ MonoBehaviour:
   - Synturnon
   - respawn
   - Ghost_Move
+  - MoveGhost
+  - startCoroutine1
+  - startTine
+  - SynFireTrap
+  - Synswitchon
+  - FireTrapOn
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

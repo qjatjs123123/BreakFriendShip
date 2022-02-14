@@ -15,13 +15,14 @@ public class test : MonoBehaviourPunCallbacks
     bool turnon = false;
     public int[] arr = { 0, 0, 0, 0 };
 
-    
+    public bool IsReady ;
     // Start is called before the first frame update
     void Start()
     {     
         Spawn();
-        
-        
+        IsReady = false;
+
+
     }
     void Awake()
     {
@@ -100,10 +101,11 @@ public class test : MonoBehaviourPunCallbacks
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        if (players.Length == 1 && !turnon) // 테스트
+        if (players.Length == 2 && !turnon) // 테스트
         {
             players_sort();
             turnon = true;
+            IsReady = true;
         }
         if (Input.GetKeyDown(KeyCode.Escape) && PhotonNetwork.IsMasterClient)
             regameimg.gameObject.SetActive(true);

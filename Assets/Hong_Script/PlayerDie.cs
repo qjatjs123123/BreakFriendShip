@@ -122,7 +122,7 @@ public class PlayerDie : MonoBehaviourPun
     //DieArea ¡¯¿‘Ω√
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag != "Player")
+        if (collision.tag != "Player" || collision.tag != "ghost")
             return;
         LocalPlayer = LocalPlayerObject();
         PlayerScript PS = LocalPlayer.transform.GetComponent<PlayerScript>();
@@ -132,8 +132,9 @@ public class PlayerDie : MonoBehaviourPun
         if (collision.tag == "Player" && collision_pv == PS.PV && !turnon)
         {
             int actornum = collision.transform.GetComponent<PlayerScript>().PV.OwnerActorNr;
-            PV.RPC("hitplayer", RpcTarget.All, actornum);
-           
+            PV.RPC("hitplayer", RpcTarget.All, actornum);          
         }
+
+
     }
 }
