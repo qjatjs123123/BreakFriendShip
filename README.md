@@ -1,11 +1,9 @@
-# Remaster_Unity2D_BreakFriendShip
+# BreakFriendShip
 ----------
 
 프로젝트 소개
 ----------
-1인 프로젝트로서, 기존 프로젝트 Unity2D_BreakFriendShip개선하고 새로운 스테이지를 추가했다. 또한 디자인적인 부분을 개선하였다.
-개발 플랫폼은 PC Window이며 개발환경은 "Unity3d 2020.3.8f1"버전을 사용하였다.
-
+Steam사의 '피코파크'게임을 모티브로 개발한 것으로 최대 4명에서 협동해서 7개 라운드를 클리어해야 하는 멀티 게임이다. 서버는 Photon Cloud를 사용하였고 Photon Cloud와 Unity간 인터페이스하는 PUN API를 사용하여 개발하였다.
 ## 프로젝트 추진 일정
 ![일정](https://user-images.githubusercontent.com/74814641/150344566-cbefc517-0022-48df-a623-9ab21bf12f35.JPG)
 
@@ -13,7 +11,7 @@
 
 --------------
 ## 주요 기술
-+ Unity2d
++ Unity
 + C#
 + Photon Cloud
 + GitHub
